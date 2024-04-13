@@ -1,17 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnhb0plmhtnp1"]
+[gd_scene load_steps=14 format=3 uid="uid://cnhb0plmhtnp1"]
 
 [ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
+[ext_resource type="Script" path="res://Scripts/Kitchen/KitchenRoomController.cs" id="1_k0vn7"]
 [ext_resource type="PackedScene" uid="uid://dtvy5ks3daagk" path="res://Scenes/Kitchen/Objects/IngredientObject.tscn" id="2_4p184"]
 [ext_resource type="Texture2D" uid="uid://4ltfue04lhao" path="res://Sprites/Kitchen/Objects/EyeJar.png" id="3_3oarg"]
 [ext_resource type="Texture2D" uid="uid://dpm6its4vspxx" path="res://Sprites/Kitchen/Objects/Bones.png" id="4_y6kp0"]
 [ext_resource type="Texture2D" uid="uid://banhic4tqbjle" path="res://Sprites/Kitchen/Objects/LizardTails.png" id="5_mrubg"]
 [ext_resource type="Texture2D" uid="uid://b1xstwypb5t77" path="res://Sprites/Kitchen/Objects/MrFluffy.png" id="6_l5duj"]
 [ext_resource type="Texture2D" uid="uid://yen3rwsur6h2" path="res://Sprites/Kitchen/Objects/FunGuys.png" id="7_sovx0"]
+[ext_resource type="PackedScene" uid="uid://c8dfo67lfhdij" path="res://Scenes/Kitchen/Objects/ArrowObject.tscn" id="8_h0a1t"]
 [ext_resource type="PackedScene" uid="uid://0xnta4ocfhhr" path="res://Scenes/Kitchen/UI/Hand.tscn" id="8_tfyck"]
+[ext_resource type="Texture2D" uid="uid://dd84b70jwt5l" path="res://Sprites/Kitchen/Backgrounds/Kitchen.png" id="9_5abef"]
+[ext_resource type="Texture2D" uid="uid://ttvgpcn8ijnv" path="res://Sprites/TopUI/LeftArrow.png" id="11_77fn0"]
+[ext_resource type="Texture2D" uid="uid://365jpswte1b0" path="res://Sprites/TopUI/RightArrow.png" id="12_4vpb4"]
 
 [node name="Kitchen" type="Node"]
 
-[node name="Rooms" type="Node2D" parent="."]
+[node name="Rooms" type="Node2D" parent="." node_paths=PackedStringArray("rooms")]
+script = ExtResource("1_k0vn7")
+rooms = [NodePath("Shelves"), NodePath("Kitchen")]
 
 [node name="Shelves" type="Node2D" parent="Rooms"]
 
@@ -47,7 +54,24 @@ texture = ExtResource("7_sovx0")
 name = "FunGuys"
 
 [node name="Kitchen" type="Node2D" parent="Rooms"]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="Rooms/Kitchen"]
+position = Vector2(160, 90)
+texture = ExtResource("9_5abef")
 
 [node name="Global" type="Node2D" parent="."]
+
+[node name="LeftArrow" parent="Global" node_paths=PackedStringArray("kitchenRoomController") instance=ExtResource("8_h0a1t")]
+position = Vector2(3, 73)
+texture = ExtResource("11_77fn0")
+direction = -1
+kitchenRoomController = NodePath("../../Rooms")
+
+[node name="RightArrow" parent="Global" node_paths=PackedStringArray("kitchenRoomController") instance=ExtResource("8_h0a1t")]
+position = Vector2(289, 73)
+texture = ExtResource("12_4vpb4")
+direction = 1
+kitchenRoomController = NodePath("../../Rooms")
 
 [node name="Hand" parent="." instance=ExtResource("8_tfyck")]
