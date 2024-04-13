@@ -46,4 +46,8 @@ position = Vector2(235, 108)
 texture = ExtResource("7_sovx0")
 name = "FunGuys"
 
+[node name="Kitchen" type="Node2D" parent="Rooms"]
+
+[node name="Global" type="Node2D" parent="."]
+
 [node name="Hand" parent="." instance=ExtResource("8_tfyck")]

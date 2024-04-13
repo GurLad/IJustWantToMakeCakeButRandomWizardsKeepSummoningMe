@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://4cy7u4ugg0fx"]
+[gd_scene load_steps=3 format=3 uid="uid://4cy7u4ugg0fx"]
 
-[ext_resource type="Material" uid="uid://dfe5d71kr1ngy" path="res://Shaders/BlackOutlineMaterial.tres" id="1_1rkec"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientIcon.cs" id="1_8s7jw"]
 [ext_resource type="FontFile" uid="uid://d3hkxhis5gt05" path="res://3X5.ttf" id="2_dd3ln"]
 
@@ -14,17 +13,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8s7jw")
-countLabel = NodePath("TextureRect/Label")
-icon = NodePath("TextureRect")
+countLabel = NodePath("PanelContainer/CenterContainer/TextureRect/Label")
+icon = NodePath("PanelContainer/CenterContainer/TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-material = ExtResource("1_1rkec")
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 18.0
+offset_bottom = 18.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

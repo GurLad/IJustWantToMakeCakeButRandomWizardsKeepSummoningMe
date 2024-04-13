@@ -30,6 +30,6 @@ script = ExtResource("4_yqc2r")
 sceneIngredientIcon = ExtResource("5_owru8")
 
 [node name="Offset" type="Control" parent="IngredientsDisplay"]
-custom_minimum_size = Vector2(10, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 mouse_filter = 2
