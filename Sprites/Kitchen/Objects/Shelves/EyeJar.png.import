@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://banhic4tqbjle"
-path="res://.godot/imported/LizardTails.png-1f54b38fe06136ad09617d466e905a69.ctex"
+uid="uid://4ltfue04lhao"
+path="res://.godot/imported/EyeJar.png-cdf355da7c5ef654bc2c75b472b8cd6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Kitchen/Objects/LizardTails.png"
-dest_files=["res://.godot/imported/LizardTails.png-1f54b38fe06136ad09617d466e905a69.ctex"]
+source_file="res://Sprites/Kitchen/Objects/Shelves/EyeJar.png"
+dest_files=["res://.godot/imported/EyeJar.png-cdf355da7c5ef654bc2c75b472b8cd6e.ctex"]
 
 [params]
 

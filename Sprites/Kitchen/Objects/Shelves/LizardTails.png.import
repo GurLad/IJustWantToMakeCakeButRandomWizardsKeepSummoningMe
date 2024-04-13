@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yen3rwsur6h2"
-path="res://.godot/imported/FunGuys.png-991074590b2fc7c6c3c4486946a50968.ctex"
+uid="uid://banhic4tqbjle"
+path="res://.godot/imported/LizardTails.png-c3f617ae52145a7954a0a06fd30953ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Kitchen/Objects/FunGuys.png"
-dest_files=["res://.godot/imported/FunGuys.png-991074590b2fc7c6c3c4486946a50968.ctex"]
+source_file="res://Sprites/Kitchen/Objects/Shelves/LizardTails.png"
+dest_files=["res://.godot/imported/LizardTails.png-c3f617ae52145a7954a0a06fd30953ed.ctex"]
 
 [params]
 
