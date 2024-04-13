@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtvy5ks3daagk"]
+[gd_scene load_steps=4 format=3 uid="uid://dtvy5ks3daagk"]
 
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenObjects/KOIngredient.cs" id="1_05nac"]
+[ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="2_mx006"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axgpv"]
 radius = 0.01
@@ -10,6 +11,7 @@ centered = false
 script = ExtResource("1_05nac")
 sprite = NodePath(".")
 collisionShape = NodePath("Area2D/CollisionShape2D")
+outlineMaterial = ExtResource("2_mx006")
 
 [node name="Area2D" type="Area2D" parent="."]
 

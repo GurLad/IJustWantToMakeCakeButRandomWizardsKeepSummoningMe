@@ -6,6 +6,7 @@ public abstract partial class AKitchenObject : Node
     [ExportGroup("Internal")]
     [Export] private Sprite2D sprite;
     [Export] private CollisionShape2D collisionShape;
+    [Export] private Material outlineMaterial;
 
     public override void _Ready()
     {
@@ -18,12 +19,12 @@ public abstract partial class AKitchenObject : Node
 
     public void Highlight(Hand hand)
     {
-        // TBA
+        sprite.Material = outlineMaterial;
     }
 
     public void Leave(Hand hand)
     {
-        // TBA
+        sprite.Material = null;
     }
 
     public abstract bool CanInteract(Hand hand);
