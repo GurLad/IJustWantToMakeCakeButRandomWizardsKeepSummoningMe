@@ -88,7 +88,7 @@ position = Vector2(204, 73)
 texture = ExtResource("12_a2iq7")
 state = 2
 time = 1.0
-tooltip = "Burn"
+tooltip = "Cook"
 
 [node name="Bowl" parent="Rooms/Kitchen/Objects" instance=ExtResource("13_4hqrj")]
 position = Vector2(109, 61)
