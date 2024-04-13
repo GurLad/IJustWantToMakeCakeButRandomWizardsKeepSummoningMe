@@ -1,23 +1,25 @@
 using Godot;
 using System;
 
-public partial class HandCursor : TextureRect
+public partial class HandCursor : Control
 {
+    [Export] private TextureRect normal;
+    [Export] private TextureProgressBar working;
+
     public float TimedPercent
     {
-        set
-        {
-            // TBA
-        }
+        set => working.Value = value;
     }
 
     public void SetTimed()
     {
-        // TBA
+        normal.Visible = false;
+        working.Visible = true;
     }
     
     public void SetNormal()
     {
-        // TBA
+        normal.Visible = true;
+        working.Visible = false;
     }
 }

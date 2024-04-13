@@ -1,26 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://0xnta4ocfhhr"]
+[gd_scene load_steps=8 format=3 uid="uid://0xnta4ocfhhr"]
 
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/Hand.cs" id="1_81jkx"]
 [ext_resource type="Texture2D" uid="uid://uvn1tpldr1o3" path="res://Sprites/Misc/Cursor.png" id="2_jgn01"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/HandCursor.cs" id="3_iwhhx"]
+[ext_resource type="Texture2D" uid="uid://ddbdyu4mnwy2c" path="res://Sprites/Misc/WorkingCursorBelow.png" id="4_wr2q2"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientsDisplay.cs" id="4_yqc2r"]
+[ext_resource type="Texture2D" uid="uid://kn1dd60jp0n" path="res://Sprites/Misc/WorkingCursorTop.png" id="5_a2a4c"]
 [ext_resource type="PackedScene" uid="uid://4cy7u4ugg0fx" path="res://Scenes/Kitchen/UI/IngredientUI.tscn" id="5_owru8"]
 
-[node name="Hand" type="VBoxContainer" node_paths=PackedStringArray("cursor", "ingredientsDisplay")]
+[node name="Hand" type="VBoxContainer" node_paths=PackedStringArray("ingredientsDisplay")]
 mouse_filter = 2
 theme_override_constants/separation = -10
 script = ExtResource("1_81jkx")
-cursor = NodePath("TextureRect")
 ingredientsDisplay = NodePath("IngredientsDisplay")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Cursor" type="Control" parent="." node_paths=PackedStringArray("normal", "working")]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
-texture = ExtResource("2_jgn01")
 script = ExtResource("3_iwhhx")
+normal = NodePath("Normal")
+working = NodePath("TextureProgressBar")
+
+[node name="Normal" type="TextureRect" parent="Cursor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jgn01")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Cursor"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.001
+fill_mode = 4
+texture_under = ExtResource("4_wr2q2")
+texture_progress = ExtResource("5_a2a4c")
 
 [node name="IngredientsDisplay" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 16)
