@@ -9,6 +9,7 @@ public partial class Hand : Control
     [Export] private int maxDifferentIngredients = 5;
     [Export] private HandCursor cursor;
     [Export] private IngredientsDisplay ingredientsDisplay;
+    [Export] private PackedScene sceneFloatingX;
 
     private List<Ingredient> ingredients = new List<Ingredient>();
     private Interpolator interpolator = new Interpolator();
@@ -42,6 +43,12 @@ public partial class Hand : Control
                     if (currentKitchenObject?.CanInteract(this) ?? false)
                     {
                         currentKitchenObject?.Interact(this);
+                    }
+                    else if (currentKitchenObject != null)
+                    {
+                        FloatingX floatingX = sceneFloatingX.Instantiate<FloatingX>();
+                        GetParent().AddChild(floatingX);
+                        floatingX.Display(Position);
                     }
                 }
                 else if (interpolator.Active)

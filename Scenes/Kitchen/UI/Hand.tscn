@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://0xnta4ocfhhr"]
+[gd_scene load_steps=9 format=3 uid="uid://0xnta4ocfhhr"]
 
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/Hand.cs" id="1_81jkx"]
 [ext_resource type="Texture2D" uid="uid://uvn1tpldr1o3" path="res://Sprites/Misc/Cursor.png" id="2_jgn01"]
+[ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/Kitchen/UI/FloatingX.tscn" id="2_pqa77"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/HandCursor.cs" id="3_iwhhx"]
 [ext_resource type="Texture2D" uid="uid://ddbdyu4mnwy2c" path="res://Sprites/Misc/WorkingCursorBelow.png" id="4_wr2q2"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientsDisplay.cs" id="4_yqc2r"]
@@ -14,6 +15,7 @@ theme_override_constants/separation = -10
 script = ExtResource("1_81jkx")
 cursor = NodePath("Cursor")
 ingredientsDisplay = NodePath("IngredientsDisplay")
+sceneFloatingX = ExtResource("2_pqa77")
 
 [node name="Cursor" type="Control" parent="." node_paths=PackedStringArray("normal", "working")]
 custom_minimum_size = Vector2(16, 16)
