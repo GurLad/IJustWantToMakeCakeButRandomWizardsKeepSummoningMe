@@ -16,21 +16,21 @@ public abstract partial class AKitchenObject : Sprite2D
         trueShape.Size = Texture.GetSize();
         collisionShape.Shape = trueShape;
         collisionShape.Position = trueShape.Size / 2f;
+        GD.Print(trueShape.Size);
         // Blegh
-        area.MouseEntered += () => { if (Hand.Current != null) Highlight(Hand.Current); };
-        area.MouseExited += () => { if (Hand.Current != null) Leave(Hand.Current); };
+        area.MouseEntered += () => GD.Print("????");
+        area.MouseEntered += () => { if (Hand.Current != null) Hand.Current.EnterKitchenObject(this); };
+        area.MouseExited += () => { if (Hand.Current != null) Hand.Current.LeaveKitchenObject(this); };
     }
 
-    public void Highlight(Hand hand)
+    public void Enter(Hand hand)
     {
         Material = outlineMaterial;
-        hand.EnterKitchenObject(this);
     }
 
     public void Leave(Hand hand)
     {
         Material = null;
-        hand.LeaveKitchenObject(this);
     }
 
     public abstract bool CanInteract(Hand hand);

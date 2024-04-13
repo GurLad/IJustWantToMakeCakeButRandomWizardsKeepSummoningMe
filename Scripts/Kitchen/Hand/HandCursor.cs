@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class HandCursor : Node
+public partial class HandCursor : TextureRect
 {
     public float TimedPercent
     {

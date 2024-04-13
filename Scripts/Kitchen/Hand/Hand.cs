@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Hand : Node
+public partial class Hand : Control
 {
     public static Hand Current { get; private set; }
 
@@ -27,6 +27,7 @@ public partial class Hand : Node
         base._Ready();
         AddChild(interpolator);
         Current = this;
+        GD.Print("Set curr");
     }
 
     public override void _Input(InputEvent @event)
@@ -49,15 +50,30 @@ public partial class Hand : Node
         }
     }
 
+    public override void _GuiInput(InputEvent @event)
+    {
+        base._GuiInput(@event);
+        if (@event is InputEventMouseMotion mouseMotionEvent)
+        {
+            cursor.Position = mouseMotionEvent.Position;
+        }
+    }
+
     public void EnterKitchenObject(AKitchenObject kitchenObject)
     {
+        if (currentKitchenObject != null)
+        {
+            currentKitchenObject.Leave(this);
+        }
         currentKitchenObject = kitchenObject;
+        currentKitchenObject.Enter(this);
     }
 
     public void LeaveKitchenObject(AKitchenObject kitchenObject)
     {
         if (currentKitchenObject == kitchenObject)
         {
+            currentKitchenObject.Leave(this);
             currentKitchenObject = null;
         }
     }
