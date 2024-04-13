@@ -1,0 +1,68 @@
+[gd_scene load_steps=23 format=3 uid="uid://c2egeb42ahgcq"]
+
+[ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientLoader.cs" id="1_6ebhi"]
+[ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientLoaderObject.cs" id="2_h2j7l"]
+[ext_resource type="Texture2D" uid="uid://ukaf3qg4k6i4" path="res://Sprites/Kitchen/IngredientIcons/Eyeball.png" id="3_kyj35"]
+[ext_resource type="Texture2D" uid="uid://j8adqto0c4go" path="res://Sprites/Kitchen/IngredientIcons/EyeballBurned.png" id="4_yo8yo"]
+[ext_resource type="Texture2D" uid="uid://bb1kf05hdeuye" path="res://Sprites/Kitchen/IngredientIcons/EyeballCut.png" id="5_5vot5"]
+[ext_resource type="Texture2D" uid="uid://dbdddc317o2g3" path="res://Sprites/Kitchen/IngredientIcons/EyeballWet.png" id="6_8fhsp"]
+[ext_resource type="Texture2D" uid="uid://dvpdfa3ghson6" path="res://Sprites/Kitchen/IngredientIcons/Bone.png" id="7_fh8ag"]
+[ext_resource type="Texture2D" uid="uid://vmyngmhrs15a" path="res://Sprites/Kitchen/IngredientIcons/BoneBurned.png" id="8_m6vot"]
+[ext_resource type="Texture2D" uid="uid://blglsh80uwp4e" path="res://Sprites/Kitchen/IngredientIcons/BoneCut.png" id="9_up0fx"]
+[ext_resource type="Texture2D" uid="uid://b67khy2op4anh" path="res://Sprites/Kitchen/IngredientIcons/BoneWet.png" id="10_jrps4"]
+[ext_resource type="Texture2D" uid="uid://besgwujw8sxfl" path="res://Sprites/Kitchen/IngredientIcons/LizardTail.png" id="11_hefft"]
+[ext_resource type="Texture2D" uid="uid://bsqmas33lqvgx" path="res://Sprites/Kitchen/IngredientIcons/LizardTailBurned.png" id="12_gh2at"]
+[ext_resource type="Texture2D" uid="uid://brvn274r3l5wv" path="res://Sprites/Kitchen/IngredientIcons/LizardTailCut.png" id="13_ou3v2"]
+[ext_resource type="Texture2D" uid="uid://cj2jhg5aug7dg" path="res://Sprites/Kitchen/IngredientIcons/LizardTailWet.png" id="14_h2wuq"]
+[ext_resource type="Texture2D" uid="uid://b3bcxclxtcd6g" path="res://Sprites/Kitchen/IngredientIcons/MrFluffy.png" id="15_kdax0"]
+[ext_resource type="Texture2D" uid="uid://cnumybe02o287" path="res://Sprites/Kitchen/IngredientIcons/MrFluffyBurned.png" id="16_www5p"]
+[ext_resource type="Texture2D" uid="uid://r0qhx5p3dpyy" path="res://Sprites/Kitchen/IngredientIcons/MrFluffyCut.png" id="17_cj75n"]
+[ext_resource type="Texture2D" uid="uid://b74tvpvtcmnm2" path="res://Sprites/Kitchen/IngredientIcons/MrFluffyWet.png" id="18_ojpru"]
+[ext_resource type="Texture2D" uid="uid://frfg3td8ct1p" path="res://Sprites/Kitchen/IngredientIcons/FunGuys.png" id="19_l24qx"]
+[ext_resource type="Texture2D" uid="uid://canvsmbh387x4" path="res://Sprites/Kitchen/IngredientIcons/FunGuysBurned.png" id="20_7eyx0"]
+[ext_resource type="Texture2D" uid="uid://bp8px47icysx5" path="res://Sprites/Kitchen/IngredientIcons/FunGuysCut.png" id="21_og85k"]
+[ext_resource type="Texture2D" uid="uid://bp7xfur0kfvi3" path="res://Sprites/Kitchen/IngredientIcons/FunGuysWet.png" id="22_xbrid"]
+
+[node name="KitchenIngredientsLoader" type="Node" node_paths=PackedStringArray("objects")]
+script = ExtResource("1_6ebhi")
+objects = [null]
+
+[node name="Eyeball" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("3_kyj35")
+burnedSprite = ExtResource("4_yo8yo")
+cutSprite = ExtResource("5_5vot5")
+wetSprite = ExtResource("6_8fhsp")
+
+[node name="Bone" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("7_fh8ag")
+burnedSprite = ExtResource("8_m6vot")
+cutSprite = ExtResource("9_up0fx")
+wetSprite = ExtResource("10_jrps4")
+
+[node name="LizardTail" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("11_hefft")
+burnedSprite = ExtResource("12_gh2at")
+cutSprite = ExtResource("13_ou3v2")
+wetSprite = ExtResource("14_h2wuq")
+
+[node name="MrFluffy" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("15_kdax0")
+burnedSprite = ExtResource("16_www5p")
+cutSprite = ExtResource("17_cj75n")
+wetSprite = ExtResource("18_ojpru")
+
+[node name="FunGuys" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("19_l24qx")
+burnedSprite = ExtResource("20_7eyx0")
+cutSprite = ExtResource("21_og85k")
+wetSprite = ExtResource("22_xbrid")

@@ -26,12 +26,12 @@ name = "Eyeball"
 [node name="BoneJar" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(98, 91)
 texture = ExtResource("4_y6kp0")
-name = "Bones"
+name = "Bone"
 
 [node name="LizardTails" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(146, 115)
 texture = ExtResource("5_mrubg")
-name = "LizardTails"
+name = "LizardTail"
 
 [node name="MrFluffy" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(186, 92)
