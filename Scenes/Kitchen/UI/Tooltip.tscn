@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdwxtngospdco"]
+
+[ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_nqtrc"]
+[ext_resource type="Script" path="res://Scripts/Kitchen/Hand/Tooltip.cs" id="2_h5061"]
+
+[node name="Tooltip" type="PanelContainer" node_paths=PackedStringArray("label")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -7.5
+offset_right = 13.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_nqtrc")
+script = ExtResource("2_h5061")
+label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Text"
+horizontal_alignment = 1

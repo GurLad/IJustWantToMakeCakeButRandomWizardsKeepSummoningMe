@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtvy5ks3daagk"]
+[gd_scene load_steps=5 format=3 uid="uid://dtvy5ks3daagk"]
 
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenObjects/KOIngredient.cs" id="1_05nac"]
 [ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="2_mx006"]
+[ext_resource type="PackedScene" uid="uid://cdwxtngospdco" path="res://Scenes/Kitchen/UI/Tooltip.tscn" id="3_ushno"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axgpv"]
 radius = 0.01
 
-[node name="IngredientObject" type="Sprite2D" node_paths=PackedStringArray("area", "collisionShape")]
+[node name="IngredientObject" type="Sprite2D" node_paths=PackedStringArray("area", "collisionShape", "tooltipObject")]
 centered = false
 script = ExtResource("1_05nac")
 area = NodePath("Area2D")
 collisionShape = NodePath("Area2D/CollisionShape2D")
+tooltipObject = NodePath("Tooltip")
 outlineMaterial = ExtResource("2_mx006")
+
+[node name="Tooltip" parent="." instance=ExtResource("3_ushno")]
 
 [node name="Area2D" type="Area2D" parent="."]
 

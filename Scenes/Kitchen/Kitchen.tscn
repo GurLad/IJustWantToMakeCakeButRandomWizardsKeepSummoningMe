@@ -40,28 +40,35 @@ texture = ExtResource("1_go4tn")
 position = Vector2(44, 96)
 texture = ExtResource("3_3oarg")
 name = "Eyeball"
+tooltip = "Eyeballs"
+tooltipOffset = 5.0
 
 [node name="BoneJar" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(98, 91)
 texture = ExtResource("4_y6kp0")
 name = "Bone"
+tooltip = "Bones"
 
 [node name="LizardTails" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(146, 115)
 texture = ExtResource("5_mrubg")
 name = "LizardTail"
+tooltip = "Lizard Tails"
 
 [node name="MrFluffy" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(186, 92)
 texture = ExtResource("6_l5duj")
 name = "MrFluffy"
+tooltip = "Mr. Fluffy"
 
 [node name="FunGuys" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(235, 108)
 texture = ExtResource("7_sovx0")
 name = "FunGuys"
+tooltip = "Fun Guys"
 
 [node name="Kitchen" type="Node2D" parent="Rooms"]
+visible = false
 
 [node name="Background" type="Sprite2D" parent="Rooms/Kitchen"]
 position = Vector2(160, 90)
@@ -74,17 +81,20 @@ position = Vector2(34, 91)
 texture = ExtResource("11_i7ikf")
 state = 1
 time = 1.0
+tooltip = "Cut"
 
 [node name="Fire" parent="Rooms/Kitchen/Objects" instance=ExtResource("10_654ov")]
 position = Vector2(204, 73)
 texture = ExtResource("12_a2iq7")
 state = 2
 time = 1.0
+tooltip = "Burn"
 
 [node name="Bowl" parent="Rooms/Kitchen/Objects" instance=ExtResource("13_4hqrj")]
 position = Vector2(109, 61)
 texture = ExtResource("14_pjkiw")
 time = 0.5
+tooltip = "Add to Cake"
 
 [node name="FadeTransition" type="ColorRect" parent="."]
 visible = false

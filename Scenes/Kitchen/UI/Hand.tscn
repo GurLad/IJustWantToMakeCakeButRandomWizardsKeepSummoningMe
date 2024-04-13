@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://0xnta4ocfhhr"]
+[gd_scene load_steps=10 format=3 uid="uid://0xnta4ocfhhr"]
 
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/Hand.cs" id="1_81jkx"]
+[ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_ysyvf"]
 [ext_resource type="Texture2D" uid="uid://uvn1tpldr1o3" path="res://Sprites/Misc/Cursor.png" id="2_jgn01"]
 [ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/Kitchen/UI/FloatingX.tscn" id="2_pqa77"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/HandCursor.cs" id="3_iwhhx"]
@@ -10,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://4cy7u4ugg0fx" path="res://Scenes/Kitchen/UI/IngredientUI.tscn" id="5_owru8"]
 
 [node name="Hand" type="VBoxContainer" node_paths=PackedStringArray("cursor", "ingredientsDisplay")]
+size_flags_horizontal = 4
 mouse_filter = 2
+theme = ExtResource("1_ysyvf")
 theme_override_constants/separation = -10
 script = ExtResource("1_81jkx")
 cursor = NodePath("Cursor")
