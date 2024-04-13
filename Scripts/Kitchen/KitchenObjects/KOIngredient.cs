@@ -7,7 +7,7 @@ public partial class KOIngredient : AKitchenObject
 
     public override bool CanInteract(Hand hand)
     {
-        return !hand.IsFull;
+        return !hand.IsFull || hand.HasIngredient(name);
     }
 
     public override void Interact(Hand hand)

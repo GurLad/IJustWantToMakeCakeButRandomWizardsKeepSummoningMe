@@ -39,7 +39,10 @@ public partial class Hand : Control
             {
                 if (mouseButtonEvent.Pressed)
                 {
-                    currentKitchenObject?.Interact(this);
+                    if (currentKitchenObject?.CanInteract(this) ?? false)
+                    {
+                        currentKitchenObject?.Interact(this);
+                    }
                 }
                 else if (interpolator.Active)
                 {
@@ -87,6 +90,8 @@ public partial class Hand : Control
         }
         VisualiseIngredients();
     }
+
+    public bool HasIngredient(string name) => ingredients.Find(a => a.Name == name) != null;
 
     public bool CanApplyState(IngredientState target)
     {
