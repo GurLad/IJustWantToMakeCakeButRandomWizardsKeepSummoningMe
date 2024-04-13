@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_81jkx")
 cursor = NodePath("VBoxContainer/TextureRect")
 ingredientsDisplay = NodePath("VBoxContainer/IngredientsDisplay")
@@ -24,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
@@ -36,9 +38,11 @@ script = ExtResource("3_iwhhx")
 
 [node name="IngredientsDisplay" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("4_yqc2r")
 sceneIngredientIcon = ExtResource("5_owru8")
 
 [node name="Offset" type="Control" parent="VBoxContainer/IngredientsDisplay"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+mouse_filter = 2

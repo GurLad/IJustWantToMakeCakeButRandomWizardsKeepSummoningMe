@@ -39,7 +39,7 @@ public partial class Hand : Control
             {
                 if (mouseButtonEvent.Pressed)
                 {
-                    currentKitchenObject.Interact(this);
+                    currentKitchenObject?.Interact(this);
                 }
                 else if (interpolator.Active)
                 {

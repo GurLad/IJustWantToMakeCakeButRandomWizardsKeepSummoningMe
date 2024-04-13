@@ -6,7 +6,7 @@ public partial class IngredientsDisplay : Container
 {
     [Export] private PackedScene sceneIngredientIcon;
 
-    private List<IngredientIcon> currentIcons;
+    private List<IngredientIcon> currentIcons = new List<IngredientIcon>();
 
     public void Regenerate(List<Ingredient> ingredients)
     {

@@ -6,7 +6,7 @@ public class IngredientData
 {
     public string Name;
     public IngredientState ValidStates;
-    public Dictionary<IngredientState, Texture2D> Icons { get; private set; }
+    public Dictionary<IngredientState, Texture2D> Icons { get; private set; } = new Dictionary<IngredientState, Texture2D>();
 
     public IngredientData(IngredientLoaderObject loaderObject)
     {
