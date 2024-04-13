@@ -6,11 +6,11 @@ public static class IngredientController
 {
     private static List<IngredientData> datas = new List<IngredientData>();
 
-    public static void LoadData(IngredientLoaderObject[] objects)
+    public static void LoadData(List<IngredientLoaderObject> objects)
     {
         foreach (var item in objects)
         {
-
+            datas.Add(new IngredientData(item));
         }
     }
 

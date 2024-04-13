@@ -26,4 +26,9 @@ public class Ingredient
     {
         State = target;
     }
+
+    public Texture2D GetIcon()
+    {
+        return Data.Icons[State];
+    }
 }

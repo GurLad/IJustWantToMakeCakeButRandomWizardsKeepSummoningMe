@@ -23,9 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://bp8px47icysx5" path="res://Sprites/Kitchen/IngredientIcons/FunGuysCut.png" id="21_og85k"]
 [ext_resource type="Texture2D" uid="uid://bp7xfur0kfvi3" path="res://Sprites/Kitchen/IngredientIcons/FunGuysWet.png" id="22_xbrid"]
 
-[node name="KitchenIngredientsLoader" type="Node" node_paths=PackedStringArray("objects")]
+[node name="KitchenIngredientsLoader" type="Node"]
 script = ExtResource("1_6ebhi")
-objects = [null]
 
 [node name="Eyeball" type="Node2D" parent="."]
 visible = false

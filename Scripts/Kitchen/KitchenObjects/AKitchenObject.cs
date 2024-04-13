@@ -16,9 +16,7 @@ public abstract partial class AKitchenObject : Sprite2D
         trueShape.Size = Texture.GetSize();
         collisionShape.Shape = trueShape;
         collisionShape.Position = trueShape.Size / 2f;
-        GD.Print(trueShape.Size);
         // Blegh
-        area.MouseEntered += () => GD.Print("????");
         area.MouseEntered += () => { if (Hand.Current != null) Hand.Current.EnterKitchenObject(this); };
         area.MouseExited += () => { if (Hand.Current != null) Hand.Current.LeaveKitchenObject(this); };
     }

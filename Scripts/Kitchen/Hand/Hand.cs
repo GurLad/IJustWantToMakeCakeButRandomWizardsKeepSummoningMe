@@ -8,6 +8,7 @@ public partial class Hand : Control
 
     [Export] private int maxDifferentIngredients = 5;
     [Export] private HandCursor cursor;
+    [Export] private IngredientsDisplay ingredientsDisplay;
 
     private List<Ingredient> ingredients = new List<Ingredient>();
     private Interpolator interpolator = new Interpolator();
@@ -27,7 +28,6 @@ public partial class Hand : Control
         base._Ready();
         AddChild(interpolator);
         Current = this;
-        GD.Print("Set curr");
     }
 
     public override void _Input(InputEvent @event)
@@ -48,11 +48,6 @@ public partial class Hand : Control
                 }
             }
         }
-    }
-
-    public override void _GuiInput(InputEvent @event)
-    {
-        base._GuiInput(@event);
         if (@event is InputEventMouseMotion mouseMotionEvent)
         {
             cursor.Position = mouseMotionEvent.Position;
@@ -133,6 +128,6 @@ public partial class Hand : Control
 
     private void VisualiseIngredients()
     {
-        // TBA
+        ingredientsDisplay.Regenerate(ingredients);
     }
 }
