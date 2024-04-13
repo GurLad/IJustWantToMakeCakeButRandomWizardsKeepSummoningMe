@@ -6,6 +6,7 @@ public partial class KitchenRoomController : Node
 {
     [Export] private Node2D[] rooms;
     [Export] private int firstRoom;
+    [Export] private FadeTransition fadeTransition;
 
     private int currentRoom;
 
@@ -18,7 +19,10 @@ public partial class KitchenRoomController : Node
 
     public void MoveRoom(int direction)
     {
-        rooms[currentRoom].Visible = false;
-        rooms[currentRoom = (currentRoom + rooms.Length + direction) % rooms.Length].Visible = true;
+        fadeTransition.Transition(() =>
+        {
+            rooms[currentRoom].Visible = false;
+            rooms[currentRoom = (currentRoom + rooms.Length + direction) % rooms.Length].Visible = true;
+        }, null);
     }
 }
