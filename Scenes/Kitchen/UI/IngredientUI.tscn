@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://4cy7u4ugg0fx"]
+[gd_scene load_steps=4 format=3 uid="uid://4cy7u4ugg0fx"]
 
+[ext_resource type="Material" uid="uid://dfe5d71kr1ngy" path="res://Shaders/BlackOutlineMaterial.tres" id="1_1rkec"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientIcon.cs" id="1_8s7jw"]
 [ext_resource type="FontFile" uid="uid://d3hkxhis5gt05" path="res://3X5.ttf" id="2_dd3ln"]
 
@@ -17,6 +18,7 @@ countLabel = NodePath("TextureRect/Label")
 icon = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_1rkec")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0

@@ -50,7 +50,7 @@ public partial class Hand : Control
         }
         if (@event is InputEventMouseMotion mouseMotionEvent)
         {
-            cursor.Position = mouseMotionEvent.Position;
+            Position = mouseMotionEvent.Position;
         }
     }
 

@@ -11,6 +11,6 @@ public partial class IngredientIcon : Node
     {
         icon.Texture = ingredient.GetIcon();
         countLabel.Text = ingredient.Count.ToString();
-        countLabel.Visible = ingredient.Count > 0;
+        countLabel.Visible = ingredient.Count > 1;
     }
 }

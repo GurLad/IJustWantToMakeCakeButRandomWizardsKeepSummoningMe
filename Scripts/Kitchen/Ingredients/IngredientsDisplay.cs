@@ -14,11 +14,13 @@ public partial class IngredientsDisplay : Container
         currentIcons.ForEach(a => a.QueueFree());
         currentIcons.Clear();
 
+        GD.Print(ingredients.Count);
         foreach (var ingredient in ingredients)
         {
             IngredientIcon newIcon = sceneIngredientIcon.Instantiate<IngredientIcon>();
             newIcon.Update(ingredient);
             currentIcons.Add(newIcon);
+            AddChild(newIcon);
         }
     }
 }
