@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-public abstract partial class AKitchenObject : Node
+public abstract partial class AKitchenObject : Sprite2D
 {
+    [Export] private string Tooltip;
     [ExportGroup("Internal")]
-    [Export] private Sprite2D sprite;
+    [Export] private Area2D area;
     [Export] private CollisionShape2D collisionShape;
     [Export] private Material outlineMaterial;
 
@@ -12,19 +13,24 @@ public abstract partial class AKitchenObject : Node
     {
         base._Ready();
         RectangleShape2D trueShape = new RectangleShape2D();
-        trueShape.Size = sprite.Texture.GetSize();
+        trueShape.Size = Texture.GetSize();
         collisionShape.Shape = trueShape;
         collisionShape.Position = trueShape.Size / 2f;
+        // Blegh
+        area.MouseEntered += () => { if (Hand.Current != null) Highlight(Hand.Current); };
+        area.MouseExited += () => { if (Hand.Current != null) Leave(Hand.Current); };
     }
 
     public void Highlight(Hand hand)
     {
-        sprite.Material = outlineMaterial;
+        Material = outlineMaterial;
+        hand.EnterKitchenObject(this);
     }
 
     public void Leave(Hand hand)
     {
-        sprite.Material = null;
+        Material = null;
+        hand.LeaveKitchenObject(this);
     }
 
     public abstract bool CanInteract(Hand hand);

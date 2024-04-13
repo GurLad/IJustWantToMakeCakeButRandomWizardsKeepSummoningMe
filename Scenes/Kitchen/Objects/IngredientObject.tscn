@@ -6,10 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_axgpv"]
 radius = 0.01
 
-[node name="IngredientObject" type="Sprite2D" node_paths=PackedStringArray("sprite", "collisionShape")]
+[node name="IngredientObject" type="Sprite2D" node_paths=PackedStringArray("area", "collisionShape")]
 centered = false
 script = ExtResource("1_05nac")
-sprite = NodePath(".")
+area = NodePath("Area2D")
 collisionShape = NodePath("Area2D/CollisionShape2D")
 outlineMaterial = ExtResource("2_mx006")
 

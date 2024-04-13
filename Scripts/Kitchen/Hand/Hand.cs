@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public partial class Hand : Node
 {
+    public static Hand Current { get; private set; }
+
     [Export] private int maxDifferentIngredients = 5;
     [Export] private HandCursor cursor;
 
     private List<Ingredient> ingredients = new List<Ingredient>();
     private Interpolator interpolator = new Interpolator();
+    private AKitchenObject currentKitchenObject;
 
     public bool IsFull => ingredients.Count >= maxDifferentIngredients;
     public bool IsEmpty => ingredients.Count <= 0;
@@ -23,6 +26,40 @@ public partial class Hand : Node
     {
         base._Ready();
         AddChild(interpolator);
+        Current = this;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (@event is InputEventMouseButton mouseButtonEvent)
+        {
+            if (mouseButtonEvent.ButtonIndex == MouseButton.Left && !mouseButtonEvent.IsEcho())
+            {
+                if (mouseButtonEvent.Pressed)
+                {
+                    currentKitchenObject.Interact(this);
+                }
+                else if (interpolator.Active)
+                {
+                    interpolator.Stop(false);
+                    cursor.SetNormal();
+                }
+            }
+        }
+    }
+
+    public void EnterKitchenObject(AKitchenObject kitchenObject)
+    {
+        currentKitchenObject = kitchenObject;
+    }
+
+    public void LeaveKitchenObject(AKitchenObject kitchenObject)
+    {
+        if (currentKitchenObject == kitchenObject)
+        {
+            currentKitchenObject = null;
+        }
     }
 
     public void AddIngredient(string name)
