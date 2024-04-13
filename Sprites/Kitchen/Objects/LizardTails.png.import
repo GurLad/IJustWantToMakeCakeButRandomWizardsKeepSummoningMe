@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fcasfky5qp6k"
-path="res://.godot/imported/ShelvesWithItems.png-ff37baa3d0ffb3debdb2d32056ebc1c7.ctex"
+uid="uid://banhic4tqbjle"
+path="res://.godot/imported/LizardTails.png-1f54b38fe06136ad09617d466e905a69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Backgrounds/Kitchen/ShelvesWithItems.png"
-dest_files=["res://.godot/imported/ShelvesWithItems.png-ff37baa3d0ffb3debdb2d32056ebc1c7.ctex"]
+source_file="res://Sprites/Kitchen/Objects/LizardTails.png"
+dest_files=["res://.godot/imported/LizardTails.png-1f54b38fe06136ad09617d466e905a69.ctex"]
 
 [params]
 

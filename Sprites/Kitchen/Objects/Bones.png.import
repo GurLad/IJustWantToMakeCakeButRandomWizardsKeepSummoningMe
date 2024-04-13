@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://07tvcjyshjny"
-path="res://.godot/imported/Fridge.png-f3265715653e1f2883d2890db8571e40.ctex"
+uid="uid://dpm6its4vspxx"
+path="res://.godot/imported/Bones.png-e579cb26a64bfd41cd2a24ee442944d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Backgrounds/Kitchen/Fridge.png"
-dest_files=["res://.godot/imported/Fridge.png-f3265715653e1f2883d2890db8571e40.ctex"]
+source_file="res://Sprites/Kitchen/Objects/Bones.png"
+dest_files=["res://.godot/imported/Bones.png-e579cb26a64bfd41cd2a24ee442944d0.ctex"]
 
 [params]
 

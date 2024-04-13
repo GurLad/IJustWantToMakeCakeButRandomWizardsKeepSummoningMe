@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnhb0plmhtnp1"]
+
+[ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
+[ext_resource type="PackedScene" uid="uid://dtvy5ks3daagk" path="res://Scenes/Kitchen/Objects/IngredientObject.tscn" id="2_4p184"]
+[ext_resource type="Texture2D" uid="uid://4ltfue04lhao" path="res://Sprites/Kitchen/Objects/EyeJar.png" id="3_3oarg"]
+[ext_resource type="Texture2D" uid="uid://dpm6its4vspxx" path="res://Sprites/Kitchen/Objects/Bones.png" id="4_y6kp0"]
+[ext_resource type="Texture2D" uid="uid://banhic4tqbjle" path="res://Sprites/Kitchen/Objects/LizardTails.png" id="5_mrubg"]
+[ext_resource type="Texture2D" uid="uid://b1xstwypb5t77" path="res://Sprites/Kitchen/Objects/MrFluffy.png" id="6_l5duj"]
+[ext_resource type="Texture2D" uid="uid://yen3rwsur6h2" path="res://Sprites/Kitchen/Objects/FunGuys.png" id="7_sovx0"]
+
+[node name="Kitchen" type="Node2D"]
+
+[node name="Shelves" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Shelves"]
+position = Vector2(160, 90)
+texture = ExtResource("1_go4tn")
+
+[node name="Objects" type="Node2D" parent="Shelves"]
+
+[node name="EyeJar" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(44, 96)
+texture = ExtResource("3_3oarg")
+name = "Eyeball"
+
+[node name="BoneJar" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(98, 91)
+texture = ExtResource("4_y6kp0")
+name = "Bones"
+
+[node name="LizardTails" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(146, 115)
+texture = ExtResource("5_mrubg")
+name = "LizardTails"
+
+[node name="MrFluffy" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(186, 92)
+texture = ExtResource("6_l5duj")
+name = "MrFluffy"
+
+[node name="FunGuys" parent="Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(235, 108)
+texture = ExtResource("7_sovx0")
+name = "FunGuys"

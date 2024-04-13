@@ -7,7 +7,7 @@ public partial class Hand : Node
     [Export] private int maxDifferentIngredients = 5;
     [Export] private HandCursor cursor;
 
-    private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients = new List<Ingredient>();
     private Interpolator interpolator = new Interpolator();
 
     public bool IsFull => ingredients.Count >= maxDifferentIngredients;

@@ -7,7 +7,7 @@ public abstract partial class ATimedKitchenObject : AKitchenObject
 
     public override void Interact(Hand hand)
     {
-        hand.BeginTimedAction(time, InteractAction);
+        hand.BeginTimedAction(time, () => InteractAction(hand));
     }
 
     protected abstract void InteractAction(Hand hand);

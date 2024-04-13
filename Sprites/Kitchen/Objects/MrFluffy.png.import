@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd84b70jwt5l"
-path="res://.godot/imported/Kitchen.png-d85e8209b1f91046686657de74e13a78.ctex"
+uid="uid://b1xstwypb5t77"
+path="res://.godot/imported/MrFluffy.png-a78a46617af669740bbb807429b640b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Backgrounds/Kitchen/Kitchen.png"
-dest_files=["res://.godot/imported/Kitchen.png-d85e8209b1f91046686657de74e13a78.ctex"]
+source_file="res://Sprites/Kitchen/Objects/MrFluffy.png"
+dest_files=["res://.godot/imported/MrFluffy.png-a78a46617af669740bbb807429b640b3.ctex"]
 
 [params]
 

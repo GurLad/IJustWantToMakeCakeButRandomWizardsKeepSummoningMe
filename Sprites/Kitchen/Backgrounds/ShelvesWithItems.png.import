@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4kupjddvcujb"
-path="res://.godot/imported/Shelves.png-c8748d2cb9711474a08f441776556b81.ctex"
+uid="uid://fcasfky5qp6k"
+path="res://.godot/imported/ShelvesWithItems.png-8e4b026fcb21d6e05e647b03d582bf00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Backgrounds/Kitchen/Shelves.png"
-dest_files=["res://.godot/imported/Shelves.png-c8748d2cb9711474a08f441776556b81.ctex"]
+source_file="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png"
+dest_files=["res://.godot/imported/ShelvesWithItems.png-8e4b026fcb21d6e05e647b03d582bf00.ctex"]
 
 [params]
 
