@@ -79,5 +79,6 @@ kitchenRoomController = NodePath("../../Rooms")
 [node name="BowlObject" parent="Global" instance=ExtResource("13_4hqrj")]
 position = Vector2(6, 6)
 texture = ExtResource("14_bw1xj")
+time = 1.0
 
 [node name="Hand" parent="." instance=ExtResource("8_tfyck")]

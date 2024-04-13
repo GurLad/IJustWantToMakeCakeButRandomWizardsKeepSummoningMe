@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class KOBowl : AKitchenObject
+public partial class KOBowl : ATimedKitchenObject
 {
     public List<Ingredient> ingredients = new List<Ingredient>();
 
@@ -11,7 +11,7 @@ public partial class KOBowl : AKitchenObject
         return !hand.IsEmpty;
     }
 
-    public override void Interact(Hand hand)
+    protected override void InteractAction(Hand hand)
     {
         ingredients.AddRange(hand.TakeAllIngredients());
     }
