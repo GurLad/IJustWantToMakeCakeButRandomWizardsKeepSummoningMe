@@ -28,7 +28,7 @@ public partial class KOChangeRoom : AKitchenObject
         return true;
     }
 
-    public override void Interact(Hand hand)
+    protected override void InteractAction(Hand hand)
     {
         kitchenRoomController.MoveRoom(direction);
     }

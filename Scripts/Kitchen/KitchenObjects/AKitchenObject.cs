@@ -3,6 +3,7 @@ using System;
 
 public abstract partial class AKitchenObject : Sprite2D
 {
+    [Export] protected AudioStream finishSFX;
     [Export] private string tooltip;
     [Export] private float tooltipOffset = 3f;
     [ExportGroup("Internal")]
@@ -14,11 +15,16 @@ public abstract partial class AKitchenObject : Sprite2D
     [Export] private Material outlineMaterial;
 
     private Interpolator interpolator = new Interpolator();
+    private AudioStreamPlayer2D streamPlayer = new AudioStreamPlayer2D();
+
+    public abstract bool CanInteract(Hand hand);
+    protected abstract void InteractAction(Hand hand);
 
     public override void _Ready()
     {
         base._Ready();
         AddChild(interpolator);
+        AddChild(streamPlayer);
         RectangleShape2D trueShape = new RectangleShape2D();
         trueShape.Size = Texture.GetSize();
         collisionShape.Shape = trueShape;
@@ -60,6 +66,19 @@ public abstract partial class AKitchenObject : Sprite2D
         }
     }
 
-    public abstract bool CanInteract(Hand hand);
-    public abstract void Interact(Hand hand);
+    public virtual void Interact(Hand hand)
+    {
+        Play(finishSFX);
+        InteractAction(hand);
+    }
+
+    protected void Play(AudioStream stream)
+    {
+        streamPlayer.Stop();
+        if (stream != null)
+        {
+            streamPlayer.Stream = stream;
+            streamPlayer.Play();
+        }
+    }
 }

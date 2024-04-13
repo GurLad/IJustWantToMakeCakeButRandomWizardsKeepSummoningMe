@@ -10,7 +10,7 @@ public partial class KOIngredient : AKitchenObject
         return !hand.IsFull || hand.HasIngredient(name);
     }
 
-    public override void Interact(Hand hand)
+    protected override void InteractAction(Hand hand)
     {
         hand.AddIngredient(name);
     }

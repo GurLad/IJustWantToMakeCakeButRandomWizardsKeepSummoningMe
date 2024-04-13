@@ -4,11 +4,16 @@ using System;
 public abstract partial class ATimedKitchenObject : AKitchenObject
 {
     [Export] private float time;
+    [Export] private AudioStream workingSFX;
 
     public override void Interact(Hand hand)
     {
-        hand.BeginTimedAction(time, () => InteractAction(hand));
+        Play(workingSFX);
+        hand.BeginTimedAction(this, time, () => { Play(finishSFX); InteractAction(hand); });
     }
 
-    protected abstract void InteractAction(Hand hand);
+    public void StopAction()
+    {
+        Play(null);
+    }
 }

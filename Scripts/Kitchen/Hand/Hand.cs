@@ -14,6 +14,7 @@ public partial class Hand : Control
     private List<Ingredient> ingredients = new List<Ingredient>();
     private Interpolator interpolator = new Interpolator();
     private AKitchenObject currentKitchenObject;
+    private ATimedKitchenObject currentWorkingObject;
 
     public bool IsFull => ingredients.Count >= maxDifferentIngredients;
     public bool IsEmpty => ingredients.Count <= 0;
@@ -55,6 +56,7 @@ public partial class Hand : Control
                 {
                     interpolator.Stop(false);
                     cursor.SetNormal();
+                    currentWorkingObject?.StopAction();
                 }
             }
         }
@@ -119,9 +121,10 @@ public partial class Hand : Control
         return result;
     }
 
-    public void BeginTimedAction(float time, Action onFinish)
+    public void BeginTimedAction(ATimedKitchenObject caller, float time, Action onFinish)
     {
         EmitSignal(SignalName.BeganTimedAction);
+        currentWorkingObject = caller;
         cursor.SetTimed();
         interpolator.Interpolate(time,
             new Interpolator.InterpolateObject(
@@ -133,6 +136,7 @@ public partial class Hand : Control
 
     private void FinishTimedAction(Action onFinish)
     {
+        currentWorkingObject = null;
         cursor.SetNormal();
         onFinish?.Invoke();
         EmitSignal(SignalName.FinishedTimedAction);
