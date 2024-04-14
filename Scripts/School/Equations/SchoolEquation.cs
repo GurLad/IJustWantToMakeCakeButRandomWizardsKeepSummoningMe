@@ -9,6 +9,7 @@ public partial class SchoolEquation : Label
 
     private int answer;
     private bool selected = false;
+    private int delayedSelect = -1;
 
     [Signal]
     public delegate void AnsweredEventHandler();
@@ -26,12 +27,28 @@ public partial class SchoolEquation : Label
     {
         Text += "=";
         questionMark.Visible = true;
+        delayedSelect = 0;
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        // Bad code weeeee
+        if (delayedSelect >= 0)
+        {
+            delayedSelect++;
+            if (delayedSelect >= 2)
+            {
+                delayedSelect = -1;
+                selected = true;
+            }
+        }
     }
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-        if (selected && @event is InputEventKey keyEvent)
+        if (selected && @event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
         {
             if (keyEvent.KeyLabel >= Key.Key0 && keyEvent.KeyLabel <= Key.Key9)
             {
@@ -39,6 +56,7 @@ public partial class SchoolEquation : Label
                 {
                     questionMark.Visible = false;
                     Text += answer;
+                    delayedSelect = -1;
                     selected = false;
                     EmitSignal(SignalName.Answered);
                 }
