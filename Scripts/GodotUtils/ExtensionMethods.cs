@@ -182,4 +182,14 @@ public static class ExtensionMethods
             _ => "Crazy ",
         };
     }
+
+    public static string PrettyPrint(this List<Ingredient> ingredients)
+    {
+        return string.Join("\n", ingredients);
+    }
+
+    public static string PrettyPrint(this List<List<Ingredient>> ingredients)
+    {
+        return string.Join("\nStirred\n", ingredients.ConvertAll(a => string.Join("\n", a)));
+    }
 }

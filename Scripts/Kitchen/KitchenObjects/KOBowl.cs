@@ -22,7 +22,19 @@ public partial class KOBowl : ATimedKitchenObject
 
     protected override void InteractAction(Hand hand)
     {
-        Ingredients.AddRange(hand.TakeAllIngredients());
+        List<Ingredient> newIngredients = hand.TakeAllIngredients();
+        Ingredient clone = null;
+        foreach (var ingredient in newIngredients)
+        {
+            if ((clone = Ingredients.Find(a => a.Name == ingredient.Name && a.State == ingredient.State)) != null)
+            {
+                clone.Count += ingredient.Count;
+            }
+            else
+            {
+                Ingredients.Add(ingredient);
+            }
+        }
     }
 
     public List<Ingredient> TakeAllIngredients()

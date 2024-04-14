@@ -86,8 +86,8 @@ public partial class KitchenController : Node
 
         public override string ToString()
         {
-            return "First time: " + FirstTime + "\nBowl:\n" + string.Join("\n", BowlContents) +
-                "\nCake:\n" + string.Join("\nStirred\n", CakeParts.ConvertAll(a => string.Join("\n", BowlContents)));
+            return "First time: " + FirstTime + "\nBowl:\n" + BowlContents.PrettyPrint() +
+                "\nCake:\n" + CakeParts.PrettyPrint();
         }
     }
 }

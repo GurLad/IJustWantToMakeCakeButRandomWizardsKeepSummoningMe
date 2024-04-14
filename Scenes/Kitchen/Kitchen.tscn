@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cnhb0plmhtnp1"]
+[gd_scene load_steps=32 format=3 uid="uid://cnhb0plmhtnp1"]
 
 [ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenRoomController.cs" id="1_k0vn7"]
@@ -27,6 +27,8 @@
 [ext_resource type="Script" path="res://Scripts/FadeTransition.cs" id="15_5wmyo"]
 [ext_resource type="AudioStream" uid="uid://cyicyrrfcve52" path="res://SFX/AddToBowl.mp3" id="17_lil8d"]
 [ext_resource type="AudioStream" uid="uid://b05qnr50sbcrt" path="res://SFX/ChangeRoom.mp3" id="22_5vdfr"]
+[ext_resource type="PackedScene" uid="uid://cppfic8fmooo5" path="res://Scenes/Kitchen/Objects/StirObject.tscn" id="22_rdrhg"]
+[ext_resource type="Texture2D" uid="uid://cyim1h4tq36l" path="res://Sprites/Kitchen/Objects/Kitchen/MixingSpoon.png" id="23_0saov"]
 [ext_resource type="AudioStream" uid="uid://faqvomik68gk" path="res://SFX/Trashed.mp3" id="24_stth1"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenController.cs" id="29_rj4ev"]
 
@@ -38,6 +40,7 @@ rooms = [NodePath("Shelves"), NodePath("Kitchen")]
 fadeTransition = NodePath("../FadeTransition")
 
 [node name="Shelves" type="Node2D" parent="Rooms"]
+visible = false
 
 [node name="Background" type="Sprite2D" parent="Rooms/Shelves"]
 position = Vector2(160, 90)
@@ -103,7 +106,6 @@ finishSFX = ExtResource("5_y6idf")
 tooltip = "Energy Drink"
 
 [node name="Kitchen" type="Node2D" parent="Rooms"]
-visible = false
 
 [node name="Background" type="Sprite2D" parent="Rooms/Kitchen"]
 position = Vector2(160, 90)
@@ -134,6 +136,14 @@ kitchenController = NodePath("../../../../KitchenTeleporter")
 time = 0.5
 finishSFX = ExtResource("17_lil8d")
 tooltip = "Add to Cake"
+
+[node name="StirObject" parent="Rooms/Kitchen/Objects" node_paths=PackedStringArray("kitchenController", "bowl") instance=ExtResource("22_rdrhg")]
+position = Vector2(103, 28)
+texture = ExtResource("23_0saov")
+kitchenController = NodePath("../../../../KitchenTeleporter")
+bowl = NodePath("../Bowl")
+time = 1.5
+tooltip = "Stir"
 
 [node name="FadeTransition" type="ColorRect" parent="."]
 visible = false
