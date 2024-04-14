@@ -17,6 +17,13 @@ public class Ingredient
         Data = data;
     }
 
+    public Ingredient(string name, IngredientState state, int count)
+    {
+        Data = IngredientController.GetData(name);
+        State = state;
+        Count = count;
+    }
+
     public bool CanApplyState(IngredientState target)
     {
         return State == IngredientState.Normal && (Data.ValidStates & target) != 0;

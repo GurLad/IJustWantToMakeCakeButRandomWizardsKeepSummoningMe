@@ -5,6 +5,7 @@ using System.Linq;
 
 public partial class EndScreen : Node
 {
+    // Wow, so much hardcoding~
     private static Dictionary<IngredientState, string[]> STATE_TITLES { get; } = new Dictionary<IngredientState, string[]>()
     {
         { IngredientState.Normal, new string[] { "Astonishingly Basic", "Definitely Normal", "Low Effort" } },
@@ -13,18 +14,43 @@ public partial class EndScreen : Node
         { IngredientState.Burned | IngredientState.Cut, new string[] { "Summoner's Beloved", "Busy Bee's", "High Maintenance" } }
     };
     private static string[] CAKE_TITLES { get; } = new string[] { "Delight", "Wonder", "Dream", "Cake", "Epiphany" };
+    private static List<List<Ingredient>> PERFECT_STIRRED_PARTS { get; } = new List<List<Ingredient>>()
+    {
+        new List<Ingredient>()
+        {
+            new Ingredient("LizardTail", IngredientState.Cut, 5),
+            new Ingredient("Eyeball", IngredientState.Normal, 6)
+        },
+        new List<Ingredient>()
+        {
+            new Ingredient("Tentacle", IngredientState.Burned, 1),
+            new Ingredient("FunGuys", IngredientState.Cut, 4)
+        },
+        new List<Ingredient>()
+        {
+            new Ingredient("GrumpyFlower", IngredientState.Normal, 15),
+            new Ingredient("MrFluffy", IngredientState.Normal, 1)
+        }
+    };
+    private static List<Ingredient> PERFECT_BOWL_PARTS = new List<Ingredient>() { new Ingredient("Tentacle", IngredientState.Normal, 1) };
 
     [Export] private Godot.Collections.Dictionary<string, Texture2D> cakeTextures;
     [Export] private Label recipeLabel;
     [Export] private Label[] cakeNameLabels;
     [Export] private Sprite2D cakeSprite;
     [Export] private Label summingMistakesLabel;
+    [Export] private Label scoreLabel;
 
     public override void _Ready()
     {
         base._Ready();
         KitchenController.KitchenSaveState kitchenState = KitchenController.GetFinalSaveState();
         string[] cakeNameParts = GenerateCakeNameParts(kitchenState);
+        float scorePercent = GetScorePercent(kitchenState);
+        if (scorePercent >= 1 - Mathf.Epsilon)
+        {
+            cakeNameParts[1] = "Perfect";
+        }
         for (int i = 0; i < Mathf.Min(cakeNameLabels.Length, cakeNameParts.Length); i++)
         {
             cakeNameLabels[i].Text = cakeNameParts[i];
@@ -39,6 +65,7 @@ public partial class EndScreen : Node
             GD.PrintErr("Cake not found! " + cakeNameParts[1]);
         }
         summingMistakesLabel.Text = string.Format(summingMistakesLabel.Text, SchoolController.Mistakes);
+        scoreLabel.Text = string.Format(scoreLabel.Text, Mathf.RoundToInt(scorePercent * 100));
         SchoolController.Mistakes = 0;
     }
 
@@ -83,8 +110,8 @@ public partial class EndScreen : Node
             }
         }
         IngredientState finalState = IngredientState.Normal;
-        finalState |= stateCount[IngredientState.Burned] > stateCount[IngredientState.Normal] ? IngredientState.Burned : IngredientState.Normal;
-        finalState |= stateCount[IngredientState.Cut] > stateCount[IngredientState.Normal] ? IngredientState.Cut : IngredientState.Normal;
+        finalState |= stateCount[IngredientState.Burned] > stateCount[IngredientState.Normal] / 3 ? IngredientState.Burned : IngredientState.Normal;
+        finalState |= stateCount[IngredientState.Cut] > stateCount[IngredientState.Normal] / 3 ? IngredientState.Cut : IngredientState.Normal;
         //finalState |= stateCount[IngredientState.Wet] > stateCount[IngredientState.Normal] ? IngredientState.Wet : IngredientState.Normal;
         List<string> sortedKeys = typesCount.Keys.ToList();
         sortedKeys.Sort((a, b) => -typesCount[a].CompareTo(typesCount[b]));
@@ -123,5 +150,51 @@ public partial class EndScreen : Node
         AddLine("Bake for 30 minutes.");
         AddLine("Enjoy your " + cakeName + "!");
         return result.Trim();
+    }
+
+    private float GetScorePercent(KitchenController.KitchenSaveState kitchenState)
+    {
+        int result = 0;
+        int max = 0;
+        for (int i = 0; i < PERFECT_STIRRED_PARTS.Count; i++)
+        {
+            max += 3 * PERFECT_STIRRED_PARTS[i].Count;
+            if (i < kitchenState.CakeParts.Count)
+            {
+                result += ScoreGroup(PERFECT_STIRRED_PARTS[i], kitchenState.CakeParts[i]);
+            }
+        }
+        max += 3 * PERFECT_BOWL_PARTS.Count;
+        result += ScoreGroup(PERFECT_BOWL_PARTS, kitchenState.BowlContents);
+        return (result + 0.0001f) / max;
+    }
+
+    private int ScoreGroup(List<Ingredient> correct, List<Ingredient> input)
+    {
+        int currentResult = 0;
+        foreach (var item in correct)
+        {
+            Ingredient match = input.Find(a => a.Name == item.Name);
+            if (match != null)
+            {
+                GD.Print("+" + ScoreMatch(item, match) + ": " + item + " has match: " + match);
+                currentResult += ScoreMatch(item, match);
+            }
+            else
+            {
+                GD.Print("+0: " + item + " has no match");
+            }
+        }
+        foreach (var item in input.FindAll(a => correct.Find(b => b.Name == a.Name) == null))
+        {
+            GD.Print("-1: " + item + " is in input but not in correct");
+            currentResult--;
+        }
+        return Mathf.Max(0, currentResult);
+    }
+
+    private int ScoreMatch(Ingredient item, Ingredient match)
+    {
+        return 1 + (match.Count == item.Count ? 1 : 0) + (match.State == item.State ? 1 : 0);
     }
 }
