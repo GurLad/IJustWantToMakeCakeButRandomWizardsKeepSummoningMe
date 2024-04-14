@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public partial class KOBowl : ATimedKitchenObject
 {
-    public List<Ingredient> ingredients = new List<Ingredient>();
+    public bool IsEmpty => ingredients.Count <= 0;
+
+    private List<Ingredient> ingredients { get; } = new List<Ingredient>();
 
     public override bool CanInteract(Hand hand)
     {
@@ -14,5 +16,12 @@ public partial class KOBowl : ATimedKitchenObject
     protected override void InteractAction(Hand hand)
     {
         ingredients.AddRange(hand.TakeAllIngredients());
+    }
+
+    public List<Ingredient> TakeAllIngredients()
+    {
+        List<Ingredient> result = new List<Ingredient>(ingredients);
+        ingredients.Clear();
+        return result;
     }
 }

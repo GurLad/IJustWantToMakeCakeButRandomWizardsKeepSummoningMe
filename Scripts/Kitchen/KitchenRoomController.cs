@@ -19,10 +19,6 @@ public partial class KitchenRoomController : Node
 
     public void MoveRoom(int direction)
     {
-        // TEMP
-        MusicController.Play("MathEqualsTension");
-        SceneController.Current.TransitionToScene("School");
-
         fadeTransition.Transition(() =>
         {
             rooms[currentRoom].Visible = false;

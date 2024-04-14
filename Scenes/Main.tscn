@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgkgukktrn5eq"]
+[gd_scene load_steps=10 format=3 uid="uid://cgkgukktrn5eq"]
 
 [ext_resource type="Script" path="res://Scripts/GodotUtils/SceneController.cs" id="1_yerql"]
 [ext_resource type="PackedScene" uid="uid://cnhb0plmhtnp1" path="res://Scenes/Kitchen/Kitchen.tscn" id="2_wfkoy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmek8eauh7nx1" path="res://Sprites/Misc/SummoningSkullSplash.png" id="3_vjot4"]
 [ext_resource type="AudioStream" uid="uid://0wex47o8mp4f" path="res://Music/HomeSweetHome.wav" id="3_wrbom"]
 [ext_resource type="AudioStream" uid="uid://clg6mu71uqo6s" path="res://SFX/TransitionSFX.mp3" id="4_h5s44"]
+[ext_resource type="PackedScene" uid="uid://0xnta4ocfhhr" path="res://Scenes/Kitchen/UI/Hand.tscn" id="4_w8u8d"]
 [ext_resource type="Script" path="res://Scripts/MusicController.cs" id="5_icqy4"]
 [ext_resource type="AudioStream" uid="uid://bnljsjpj0boa6" path="res://Music/MathEqualsTension.wav" id="7_fal6b"]
 
@@ -32,6 +33,10 @@ mouse_filter = 2
 color = Color(0.121569, 0.0627451, 0.164706, 1)
 
 [node name="ScenesHolder" type="Node" parent="."]
+
+[node name="Hand" parent="." instance=ExtResource("4_w8u8d")]
+offset_right = 16.0
+offset_bottom = 22.0
 
 [node name="Skull" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(640, 640)

@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b1xstwypb5t77" path="res://Sprites/Kitchen/Objects/Shelves/MrFluffy.png" id="6_l5duj"]
 [ext_resource type="Texture2D" uid="uid://yen3rwsur6h2" path="res://Sprites/Kitchen/Objects/Shelves/FunGuys.png" id="7_sovx0"]
 [ext_resource type="PackedScene" uid="uid://c8dfo67lfhdij" path="res://Scenes/Kitchen/Objects/ArrowObject.tscn" id="8_h0a1t"]
-[ext_resource type="PackedScene" uid="uid://0xnta4ocfhhr" path="res://Scenes/Kitchen/UI/Hand.tscn" id="8_tfyck"]
 [ext_resource type="Texture2D" uid="uid://dd84b70jwt5l" path="res://Sprites/Kitchen/Backgrounds/Kitchen.png" id="9_5abef"]
 [ext_resource type="PackedScene" uid="uid://df5bxgp4kjynq" path="res://Scenes/Kitchen/Objects/CookingToolObject.tscn" id="10_654ov"]
 [ext_resource type="Texture2D" uid="uid://dney2tuwfhvv1" path="res://Sprites/Kitchen/Objects/Shelves/Tentacles.png" id="10_elf7t"]
@@ -29,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://cyicyrrfcve52" path="res://SFX/AddToBowl.mp3" id="17_lil8d"]
 [ext_resource type="AudioStream" uid="uid://b05qnr50sbcrt" path="res://SFX/ChangeRoom.mp3" id="22_5vdfr"]
 [ext_resource type="AudioStream" uid="uid://faqvomik68gk" path="res://SFX/Trashed.mp3" id="24_stth1"]
+[ext_resource type="Script" path="res://Scripts/Kitchen/KitchenController.cs" id="29_rj4ev"]
 
 [node name="Kitchen" type="Node"]
 
@@ -168,4 +168,6 @@ texture = ExtResource("14_bw1xj")
 time = 1.0
 finishSFX = ExtResource("24_stth1")
 
-[node name="Hand" parent="." instance=ExtResource("8_tfyck")]
+[node name="KitchenTeleporter" type="Node" parent="."]
+script = ExtResource("29_rj4ev")
+TeleportRate = Vector2(12, 20)
