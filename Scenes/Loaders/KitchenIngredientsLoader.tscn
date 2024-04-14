@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c2egeb42ahgcq"]
+[gd_scene load_steps=35 format=3 uid="uid://c2egeb42ahgcq"]
 
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientLoader.cs" id="1_6ebhi"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientLoaderObject.cs" id="2_h2j7l"]
@@ -22,6 +22,18 @@
 [ext_resource type="Texture2D" uid="uid://canvsmbh387x4" path="res://Sprites/Kitchen/IngredientIcons/FunGuysBurned.png" id="20_7eyx0"]
 [ext_resource type="Texture2D" uid="uid://bp8px47icysx5" path="res://Sprites/Kitchen/IngredientIcons/FunGuysCut.png" id="21_og85k"]
 [ext_resource type="Texture2D" uid="uid://bp7xfur0kfvi3" path="res://Sprites/Kitchen/IngredientIcons/FunGuysWet.png" id="22_xbrid"]
+[ext_resource type="Texture2D" uid="uid://ms5votlfqcep" path="res://Sprites/Kitchen/IngredientIcons/Tentacle.png" id="23_1aevc"]
+[ext_resource type="Texture2D" uid="uid://c7fg6tupu05e1" path="res://Sprites/Kitchen/IngredientIcons/TentacleBurned.png" id="24_a44bc"]
+[ext_resource type="Texture2D" uid="uid://d1xs5vcxh8flx" path="res://Sprites/Kitchen/IngredientIcons/TentacleCut.png" id="25_6u7w0"]
+[ext_resource type="Texture2D" uid="uid://c42qtm6qv7ouo" path="res://Sprites/Kitchen/IngredientIcons/TentacleWet.png" id="26_euv2w"]
+[ext_resource type="Texture2D" uid="uid://pn8u3wo81ww8" path="res://Sprites/Kitchen/IngredientIcons/GrumpyFlower.png" id="27_cpbpp"]
+[ext_resource type="Texture2D" uid="uid://bknhtobwqriq8" path="res://Sprites/Kitchen/IngredientIcons/GrumpyFlowerBurned.png" id="28_jy0ys"]
+[ext_resource type="Texture2D" uid="uid://copxmx6av7nkt" path="res://Sprites/Kitchen/IngredientIcons/GrumpyFlowerCut.png" id="29_0ddf8"]
+[ext_resource type="Texture2D" uid="uid://cviwmoxeffgko" path="res://Sprites/Kitchen/IngredientIcons/GrumpyFlowerWet.png" id="30_bbub4"]
+[ext_resource type="Texture2D" uid="uid://b54403ugxuin7" path="res://Sprites/Kitchen/IngredientIcons/EnergyDrink.png" id="31_cg7yv"]
+[ext_resource type="Texture2D" uid="uid://d30mo3xydnj7u" path="res://Sprites/Kitchen/IngredientIcons/EnergyDrinkBurned.png" id="32_y4qfh"]
+[ext_resource type="Texture2D" uid="uid://bds2gbms6c237" path="res://Sprites/Kitchen/IngredientIcons/EnergyDrinkCut.png" id="33_43s35"]
+[ext_resource type="Texture2D" uid="uid://bx8gxdi8tnh58" path="res://Sprites/Kitchen/IngredientIcons/EnergyDrinkWet.png" id="34_ic1o3"]
 
 [node name="KitchenIngredientsLoader" type="Node"]
 script = ExtResource("1_6ebhi")
@@ -65,3 +77,27 @@ baseSprite = ExtResource("19_l24qx")
 burnedSprite = ExtResource("20_7eyx0")
 cutSprite = ExtResource("21_og85k")
 wetSprite = ExtResource("22_xbrid")
+
+[node name="Tentacle" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("23_1aevc")
+burnedSprite = ExtResource("24_a44bc")
+cutSprite = ExtResource("25_6u7w0")
+wetSprite = ExtResource("26_euv2w")
+
+[node name="GrumpyFlower" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("27_cpbpp")
+burnedSprite = ExtResource("28_jy0ys")
+cutSprite = ExtResource("29_0ddf8")
+wetSprite = ExtResource("30_bbub4")
+
+[node name="EnergyDrink" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_h2j7l")
+baseSprite = ExtResource("31_cg7yv")
+burnedSprite = ExtResource("32_y4qfh")
+cutSprite = ExtResource("33_43s35")
+wetSprite = ExtResource("34_ic1o3")

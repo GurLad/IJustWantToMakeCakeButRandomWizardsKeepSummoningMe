@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnhb0plmhtnp1"]
+[gd_scene load_steps=30 format=3 uid="uid://cnhb0plmhtnp1"]
 
 [ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenRoomController.cs" id="1_k0vn7"]
@@ -13,11 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://0xnta4ocfhhr" path="res://Scenes/Kitchen/UI/Hand.tscn" id="8_tfyck"]
 [ext_resource type="Texture2D" uid="uid://dd84b70jwt5l" path="res://Sprites/Kitchen/Backgrounds/Kitchen.png" id="9_5abef"]
 [ext_resource type="PackedScene" uid="uid://df5bxgp4kjynq" path="res://Scenes/Kitchen/Objects/CookingToolObject.tscn" id="10_654ov"]
+[ext_resource type="Texture2D" uid="uid://dney2tuwfhvv1" path="res://Sprites/Kitchen/Objects/Shelves/Tentacles.png" id="10_elf7t"]
 [ext_resource type="Texture2D" uid="uid://ttvgpcn8ijnv" path="res://Sprites/TopUI/LeftArrow.png" id="11_77fn0"]
 [ext_resource type="Texture2D" uid="uid://byb1k46870cxe" path="res://Sprites/Kitchen/Objects/Kitchen/CuttingBoard.png" id="11_i7ikf"]
+[ext_resource type="Texture2D" uid="uid://dt1sdt2p5pdgr" path="res://Sprites/Kitchen/Objects/Shelves/GrumpyFlowers.png" id="11_xc2hv"]
 [ext_resource type="Texture2D" uid="uid://365jpswte1b0" path="res://Sprites/TopUI/RightArrow.png" id="12_4vpb4"]
 [ext_resource type="AudioStream" uid="uid://dalfga2gm2auj" path="res://SFX/Cut.mp3" id="12_8uhyy"]
 [ext_resource type="Texture2D" uid="uid://bdlpbjsa2ch64" path="res://Sprites/Kitchen/Objects/Kitchen/Fire.png" id="12_a2iq7"]
+[ext_resource type="Texture2D" uid="uid://g0hh7k68unyh" path="res://Sprites/Kitchen/Objects/Shelves/EnergyDrink.png" id="12_u453v"]
 [ext_resource type="PackedScene" uid="uid://f5cki6pw0das" path="res://Scenes/Kitchen/Objects/BowlObject.tscn" id="13_4hqrj"]
 [ext_resource type="Texture2D" uid="uid://dxe8c8qcq1j47" path="res://Sprites/TopUI/Discard.png" id="14_bw1xj"]
 [ext_resource type="AudioStream" uid="uid://75uuceta4qi7" path="res://SFX/Fire.mp3" id="14_k0kod"]
@@ -77,6 +80,27 @@ texture = ExtResource("7_sovx0")
 name = "FunGuys"
 finishSFX = ExtResource("5_y6idf")
 tooltip = "Fun Guys"
+
+[node name="Tentacles" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(102, 25)
+texture = ExtResource("10_elf7t")
+name = "Tentacle"
+finishSFX = ExtResource("5_y6idf")
+tooltip = "Tentacles"
+
+[node name="GrumpyFlowers" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(159, 2)
+texture = ExtResource("11_xc2hv")
+name = "GrumpyFlower"
+finishSFX = ExtResource("5_y6idf")
+tooltip = "Happy Flowers"
+
+[node name="EnergyDrink" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
+position = Vector2(218, 30)
+texture = ExtResource("12_u453v")
+name = "EnergyDrink"
+finishSFX = ExtResource("5_y6idf")
+tooltip = "Energy Drink"
 
 [node name="Kitchen" type="Node2D" parent="Rooms"]
 visible = false
