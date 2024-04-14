@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cnhb0plmhtnp1"]
+[gd_scene load_steps=39 format=3 uid="uid://cnhb0plmhtnp1"]
 
 [ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenRoomController.cs" id="1_k0vn7"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://dekw4qqelh5fw" path="res://Scenes/Kitchen/Objects/RecipeObject.tscn" id="27_1b08e"]
 [ext_resource type="Texture2D" uid="uid://xyh64q2nbbvq" path="res://Sprites/TopUI/SmallQuitIcon.png" id="28_uwqro"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenController.cs" id="29_rj4ev"]
+[ext_resource type="Material" uid="uid://dfe5d71kr1ngy" path="res://Shaders/BlackOutlineMaterial.tres" id="30_nxjsv"]
 [ext_resource type="Texture2D" uid="uid://b586j6nx38baw" path="res://Sprites/TopUI/Recipe.png" id="36_jmbj4"]
 
 [node name="Kitchen" type="Node"]
@@ -177,18 +178,7 @@ position = Vector2(281, 0)
 texture = ExtResource("28_uwqro")
 kitchenRoomController = NodePath("../../..")
 finishSFX = ExtResource("22_5vdfr")
-
-[node name="FadeTransition" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("15_5wmyo")
-transitionTime = 0.3
+outlineMaterial = ExtResource("30_nxjsv")
 
 [node name="Global" type="Node2D" parent="."]
 
@@ -211,6 +201,9 @@ position = Vector2(6, 6)
 texture = ExtResource("14_bw1xj")
 time = 1.0
 finishSFX = ExtResource("24_stth1")
+tooltip = "Discard"
+tooltipOffset = 6.0
+tooltipOffsetX = 1.0
 
 [node name="RecipeObject" parent="Global" node_paths=PackedStringArray("kitchenRoomController") instance=ExtResource("27_1b08e")]
 position = Vector2(51, 5)
@@ -220,7 +213,20 @@ kitchenRoomController = NodePath("../../Rooms")
 finishSFX = ExtResource("22_5vdfr")
 tooltip = "Recipe"
 
-[node name="KitchenTeleporter" type="Node" parent="." node_paths=PackedStringArray("oven")]
+[node name="FadeTransition" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("15_5wmyo")
+transitionTime = 0.3
+
+[node name="KitchenTeleporter" type="Node" parent="." node_paths=PackedStringArray("oven", "kitchenRoomController")]
 script = ExtResource("29_rj4ev")
 TeleportRate = Vector2(12, 20)
 oven = NodePath("../Rooms/Kitchen/Objects/OvenObject")
+kitchenRoomController = NodePath("../Rooms")
