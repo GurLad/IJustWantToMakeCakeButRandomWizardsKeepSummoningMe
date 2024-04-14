@@ -9,6 +9,7 @@ public partial class KitchenController : Node
 
     [Export] private Vector2 TeleportRate;
     [Export] private KOOven oven;
+    [Export] private KitchenRoomController kitchenRoomController;
 
     private Timer timer = new Timer();
     private bool readyToTeleport = false;
@@ -27,12 +28,14 @@ public partial class KitchenController : Node
         AddChild(timer);
         if (!saveState.FirstTime)
         {
+            kitchenRoomController.SetRoom(saveState.CurrentRoom);
             timer.WaitTime = RNG.NextFloat(TeleportRate);
             timer.Timeout += TryToTeleport;
             timer.Start();
         }
         else
         {
+            kitchenRoomController.ToggleRecipeRoom(true, false);
             oven.Visible = false;
         }
         Hand.Current.BeganTimedAction += BeginTimedAction;
@@ -95,6 +98,7 @@ public partial class KitchenController : Node
     private void Teleport()
     {
         saveState.FirstTime = false;
+        saveState.CurrentRoom = kitchenRoomController.CurrentRoom;
         MusicController.Play("MathEqualsTension");
         SceneController.Current.TransitionToScene("School");
     }
@@ -104,6 +108,7 @@ public partial class KitchenController : Node
         public bool FirstTime = true;
         public List<Ingredient> BowlContents = new List<Ingredient>();
         public List<List<Ingredient>> CakeParts = new List<List<Ingredient>>();
+        public int CurrentRoom = 1;
 
         public override string ToString()
         {
