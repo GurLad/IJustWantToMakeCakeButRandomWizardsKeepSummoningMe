@@ -14,6 +14,7 @@ public partial class SchoolController : Node
         equationsController.Background.Visible = questionsController.Background.Visible = false;
         equationsController.Answered += NextActivity;
         questionsController.Answered += NextActivity;
+        NextActivity();
     }
 
     public void NextActivity()

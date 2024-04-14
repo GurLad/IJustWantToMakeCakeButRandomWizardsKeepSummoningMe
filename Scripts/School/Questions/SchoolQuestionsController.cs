@@ -3,9 +3,16 @@ using System;
 
 public partial class SchoolQuestionsController : ASchoolSubActivityController
 {
+    [Export] private PackedScene sceneQuestion;
+    [Export] private Control[] spawnPoints;
+
     public override bool ShowNext()
     {
-        EmitSignal(SignalName.Answered);
+        SchoolQuestion schoolQuestion = sceneQuestion.Instantiate<SchoolQuestion>();
+        AddChild(schoolQuestion);
+        schoolQuestion.Answered += () => EmitSignal(SignalName.Answered);
+        schoolQuestion.Position = spawnPoints.RandomItemInList().Position;
+        schoolQuestion.Display();
         return true;
     }
 }

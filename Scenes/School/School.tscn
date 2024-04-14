@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nqu4bgsr0jum"]
+[gd_scene load_steps=9 format=3 uid="uid://nqu4bgsr0jum"]
 
 [ext_resource type="Texture2D" uid="uid://ky41o1n37to1" path="res://Sprites/School/School4BGProblems.png" id="1_palxy"]
 [ext_resource type="Script" path="res://Scripts/School/SchoolController.cs" id="1_yu4fo"]
@@ -7,11 +7,13 @@
 [ext_resource type="Script" path="res://Scripts/School/Equations/SchoolEquationsController.cs" id="4_u0gdm"]
 [ext_resource type="PackedScene" uid="uid://cp5sfdyritjwh" path="res://Scenes/School/UI/Equation.tscn" id="5_yd0h1"]
 [ext_resource type="Script" path="res://Scripts/School/Questions/SchoolQuestionsController.cs" id="7_4i3e4"]
+[ext_resource type="PackedScene" uid="uid://cfs7e4qxfao8t" path="res://Scenes/School/UI/Question.tscn" id="8_xe3ox"]
 
 [node name="School" type="Node" node_paths=PackedStringArray("equationsController", "questionsController")]
 script = ExtResource("1_yu4fo")
 equationsController = NodePath("UI/Equations")
 questionsController = NodePath("UI/Questions")
+questionsRate = 0.4
 
 [node name="Backgrounds" type="Node2D" parent="."]
 
@@ -69,7 +71,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="Questions" type="Control" parent="UI" node_paths=PackedStringArray("Background")]
+[node name="Questions" type="Control" parent="UI" node_paths=PackedStringArray("spawnPoints", "Background")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,4 +79,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_4i3e4")
+sceneQuestion = ExtResource("8_xe3ox")
+spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8")]
 Background = NodePath("../../Backgrounds/Answering")
+
+[node name="SpawnPoint1" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 54.0
+offset_top = 47.0
+offset_right = 58.0
+offset_bottom = 52.0
+
+[node name="SpawnPoint2" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 121.0
+offset_top = 52.0
+offset_right = 125.0
+offset_bottom = 57.0
+
+[node name="SpawnPoint3" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 196.0
+offset_top = 54.0
+offset_right = 200.0
+offset_bottom = 59.0
+
+[node name="SpawnPoint4" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 251.0
+offset_top = 50.0
+offset_right = 255.0
+offset_bottom = 55.0
+
+[node name="SpawnPoint5" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 29.0
+offset_top = 105.0
+offset_right = 33.0
+offset_bottom = 110.0
+
+[node name="SpawnPoint6" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 93.0
+offset_top = 86.0
+offset_right = 97.0
+offset_bottom = 91.0
+
+[node name="SpawnPoint7" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 225.0
+offset_top = 86.0
+offset_right = 229.0
+offset_bottom = 91.0
+
+[node name="SpawnPoint8" type="Control" parent="UI/Questions"]
+anchors_preset = 0
+offset_left = 287.0
+offset_top = 103.0
+offset_right = 291.0
+offset_bottom = 108.0

@@ -1,15 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfs7e4qxfao8t"]
+[gd_scene load_steps=7 format=3 uid="uid://cfs7e4qxfao8t"]
 
 [ext_resource type="Texture2D" uid="uid://lp0mrdsg5grh" path="res://Sprites/School/UI/SpeechBubble.png" id="1_0biin"]
 [ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_vt88e"]
 [ext_resource type="Texture2D" uid="uid://dcwj2d4laxef" path="res://Sprites/School/UI/Yes.png" id="3_c0j3u"]
+[ext_resource type="Script" path="res://Scripts/School/Questions/SchoolQuestion.cs" id="3_fcsll"]
 [ext_resource type="Texture2D" uid="uid://r1ct3s4tuiiq" path="res://Sprites/School/UI/No.png" id="4_0fm28"]
+[ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/FloatingX.tscn" id="4_44u6x"]
 
-[node name="Question" type="TextureRect"]
-offset_right = 63.0
-offset_bottom = 23.0
+[node name="Question" type="TextureRect" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(63, 23)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_top = -23.0
+offset_right = 31.5
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(31, 23)
 theme = ExtResource("1_vt88e")
 texture = ExtResource("1_0biin")
+script = ExtResource("3_fcsll")
+arriveTime = 0.7
+leaveTime = 0.7
+label = NodePath("MarginContainer/Equation")
+sceneFloatingX = ExtResource("4_44u6x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

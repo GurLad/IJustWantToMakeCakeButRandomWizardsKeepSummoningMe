@@ -39,7 +39,7 @@ public partial class SchoolQuestion : Control
                 }
                 else
                 {
-                    FloatingX.Display(sceneFloatingX, label.Position + new Vector2(RNG.Next(-2, 3), 0), this);
+                    FloatingX.Display(sceneFloatingX, label.Position + new Vector2(RNG.Next(-2, 3) + PivotOffset.X, 0), this);
                 }
             }
         }
@@ -47,6 +47,9 @@ public partial class SchoolQuestion : Control
 
     public void Display()
     {
+        PivotOffset = Size - new Vector2(Size.X / 2, 0);
+        Position -= PivotOffset;
+        GenerateQuestion();
         interpolator.Interpolate(arriveTime, new Interpolator.InterpolateObject(
             a => Scale = baseScale * a,
             0,
@@ -62,7 +65,7 @@ public partial class SchoolQuestion : Control
             a => Scale = baseScale * a,
             1,
             0,
-            Easing.EaseOutBack));
+            Easing.EaseInBack));
         interpolator.OnFinish = () =>
         {
             EmitSignal(SignalName.Answered);

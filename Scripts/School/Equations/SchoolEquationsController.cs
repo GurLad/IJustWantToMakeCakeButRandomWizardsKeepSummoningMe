@@ -29,7 +29,7 @@ public partial class SchoolEquationsController : ASchoolSubActivityController
 
     public override bool ShowNext()
     {
-        if (equations.Count > 1)
+        if (equations.Count > 0)
         {
             equations[0].Select();
             equations.RemoveAt(0);

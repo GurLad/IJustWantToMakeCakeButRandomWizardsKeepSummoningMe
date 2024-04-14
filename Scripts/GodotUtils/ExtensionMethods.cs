@@ -37,15 +37,15 @@ public static class ExtensionMethods
         return (float)(random.NextDouble() * (maxValue - minValue) + minValue);
     }
 
-    // public static T RandomItemInList<T>(this List<T> list)
-    // {
-    //     return list.Count > 0 ? list[rng.Next(0, list.Count)] : default;
-    // }
+    public static T RandomItemInList<T>(this List<T> list)
+    {
+        return list.Count > 0 ? list[RNG.Next(0, list.Count)] : default;
+    }
 
-    // public static T RandomItemInList<T>(this T[] list)
-    // {
-    //     return list.Length > 0 ? list[rng.Next(0, list.Length)] : default;
-    // }
+    public static T RandomItemInList<T>(this T[] list)
+    {
+        return list.Length > 0 ? list[RNG.Next(0, list.Length)] : default;
+    }
 
     // Timers
 
