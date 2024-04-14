@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class SchoolEquationsController : Node
+public partial class SchoolEquationsController : ASchoolSubActivityController
 {
     [Export] private PackedScene sceneEquation;
     [Export] private VBoxContainer[] containers;
@@ -25,14 +25,24 @@ public partial class SchoolEquationsController : Node
                 equations.Add(newEquation);
             }
         }
-        // TEMP
-        equations[0].Select();
+    }
+
+    public override bool ShowNext()
+    {
+        if (equations.Count > 1)
+        {
+            equations[0].Select();
+            equations.RemoveAt(0);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void FinishedEquation()
     {
-        // TEMP
-        equations.RemoveAt(0);
-        equations[0].Select();
+        EmitSignal(SignalName.Answered);
     }
 }
