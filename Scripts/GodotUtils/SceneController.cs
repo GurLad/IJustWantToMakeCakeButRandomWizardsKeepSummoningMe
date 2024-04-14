@@ -8,13 +8,15 @@ public partial class SceneController : Node
     public static SceneController Current;
 
     [Export]
+    private float SkullRotateTimes;
+    [Export]
     private string FirstScene;
     [Export]
     private Dictionary<string, PackedScene> Scenes;
     [Export]
     private Timer Timer;
     [Export]
-    private Control BlackScreen;
+    private Control SkullSplash;
     [Export]
     private Node ScenesNode;
 
@@ -26,9 +28,10 @@ public partial class SceneController : Node
     public override void _Ready()
     {
         base._Ready();
+        SkullSplash.PivotOffset = SkullSplash.Size / 2;
         Current = this;
         TransitionToScene(FirstScene);
-        FinishFadeOut();
+        //FinishFadeOut();
     }
 
     public override void _Process(double delta)
@@ -39,14 +42,16 @@ public partial class SceneController : Node
             case State.Idle:
                 break;
             case State.FadeOut:
-                BlackScreen.Modulate = new Color(BlackScreen.Modulate, Timer.Percent());
+                SkullSplash.Scale = Vector2.One * (Easing.EaseOutSin(Timer.Percent()) + 0.0001f);
+                SkullSplash.Rotation = SkullRotateTimes * Easing.EaseOutSin(Timer.Percent()) * Mathf.Pi * 2;
                 if (Timer.TimeLeft <= 0)
                 {
                     FinishFadeOut();
                 }
                 break;
             case State.FadeIn:
-                BlackScreen.Modulate = new Color(BlackScreen.Modulate, 1 - Timer.Percent());
+                SkullSplash.Scale = Vector2.One * ((1 - Easing.EaseInSin(Timer.Percent())) + 0.0001f);
+                SkullSplash.Rotation = SkullRotateTimes * (1 + Easing.EaseInSin(Timer.Percent())) * Mathf.Pi * 2;
                 if (Timer.TimeLeft <= 0)
                 {
                     FinishFadeIn();
@@ -59,7 +64,7 @@ public partial class SceneController : Node
 
     private void FinishFadeOut()
     {
-        BlackScreen.Modulate = new Color(BlackScreen.Modulate, 1);
+        SkullSplash.Scale = Vector2.One;
         state = State.FadeIn;
         midTransition?.Invoke();
         Timer.Start();
@@ -67,15 +72,17 @@ public partial class SceneController : Node
 
     private void FinishFadeIn()
     {
-        BlackScreen.Modulate = new Color(BlackScreen.Modulate, 0);
+        SkullSplash.Scale = Vector2.One * 0.0001f;
+        SkullSplash.Visible = false;
+        SkullSplash.MouseFilter = Control.MouseFilterEnum.Ignore;
         state = State.Idle;
-        BlackScreen.MouseFilter = Control.MouseFilterEnum.Ignore;
         postTransition?.Invoke();
     }
 
     public void Transition(Action midTransition, Action postTransition)
     {
-        BlackScreen.MouseFilter = Control.MouseFilterEnum.Stop;
+        SkullSplash.MouseFilter = Control.MouseFilterEnum.Stop;
+        SkullSplash.Visible = true;
         this.midTransition = midTransition;
         this.postTransition = postTransition;
         state = State.FadeOut;

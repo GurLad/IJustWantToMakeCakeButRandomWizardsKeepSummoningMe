@@ -19,6 +19,7 @@ public partial class KitchenRoomController : Node
 
     public void MoveRoom(int direction)
     {
+        SceneController.Current.TransitionToScene("Kitchen");
         fadeTransition.Transition(() =>
         {
             rooms[currentRoom].Visible = false;
