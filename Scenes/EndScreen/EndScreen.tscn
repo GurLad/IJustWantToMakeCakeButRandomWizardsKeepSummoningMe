@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxwf61nkoertd"]
+[gd_scene load_steps=7 format=3 uid="uid://bxwf61nkoertd"]
 
 [ext_resource type="Theme" uid="uid://brjpju15xwg3w" path="res://MainTheme.tres" id="1_ry5ch"]
+[ext_resource type="Script" path="res://Scripts/EndScreen.cs" id="1_xop7r"]
+[ext_resource type="Texture2D" uid="uid://byvmbrtrdoyvr" path="res://Sprites/Kitchen/Backgrounds/BackgroundDark.png" id="2_dwysl"]
 [ext_resource type="FontFile" uid="uid://cew11fwkhsli4" path="res://iso8.ttf" id="2_rb2hb"]
 [ext_resource type="FontFile" uid="uid://dcj6tb4t3m1ow" path="res://BetterPixels.ttf" id="3_88lhi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx6gk"]
 
 [node name="EndScreen" type="Node"]
+script = ExtResource("1_xop7r")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_dwysl")
+centered = false
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -15,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_ry5ch")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI"]
@@ -22,15 +30,18 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(180.1, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rb2hb")
 text = "Your Recipe"
@@ -39,10 +50,13 @@ horizontal_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kx6gk")
 vertical_scroll_mode = 0
 
 [node name="Label2" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_88lhi")
-text = "99 X Cooked Grumpy Flower"
+text = "1. Put 99 Cooked Grumpy Flower in a bowl"
+autowrap_mode = 3
