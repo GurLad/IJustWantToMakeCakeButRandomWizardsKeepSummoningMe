@@ -1,18 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxwf61nkoertd"]
+[gd_scene load_steps=15 format=3 uid="uid://bxwf61nkoertd"]
 
 [ext_resource type="Theme" uid="uid://brjpju15xwg3w" path="res://MainTheme.tres" id="1_ry5ch"]
 [ext_resource type="Script" path="res://Scripts/EndScreen.cs" id="1_xop7r"]
-[ext_resource type="Texture2D" uid="uid://byvmbrtrdoyvr" path="res://Sprites/Kitchen/Backgrounds/BackgroundDark.png" id="2_dwysl"]
+[ext_resource type="Texture2D" uid="uid://bhwixvy53crqn" path="res://Sprites/Kitchen/Backgrounds/EndScreen.png" id="2_72lrw"]
+[ext_resource type="Texture2D" uid="uid://c8de1175dc6ah" path="res://Sprites/Kitchen/Cakes/EyeballCake.png" id="2_5803j"]
 [ext_resource type="FontFile" uid="uid://cew11fwkhsli4" path="res://iso8.ttf" id="2_rb2hb"]
 [ext_resource type="FontFile" uid="uid://dcj6tb4t3m1ow" path="res://BetterPixels.ttf" id="3_88lhi"]
+[ext_resource type="Texture2D" uid="uid://2wcfk7m3upaa" path="res://Sprites/Kitchen/Cakes/MrFluffyCake.png" id="3_cstu0"]
+[ext_resource type="Texture2D" uid="uid://dwd6sh263iotm" path="res://Sprites/Kitchen/Cakes/BoneCake.png" id="3_t1pu3"]
+[ext_resource type="Texture2D" uid="uid://btfv8s7lu8oli" path="res://Sprites/Kitchen/Cakes/EnergyDrinkCake.png" id="4_kot2w"]
+[ext_resource type="Texture2D" uid="uid://dcajq5d5ros2g" path="res://Sprites/Kitchen/Cakes/FunGuyCake.png" id="5_3unxw"]
+[ext_resource type="Texture2D" uid="uid://cmwlgpqmswmhi" path="res://Sprites/Kitchen/Cakes/LizardCake.png" id="7_iye2w"]
+[ext_resource type="Texture2D" uid="uid://eqh41031wbup" path="res://Sprites/Kitchen/Cakes/TentacleCake.png" id="8_j3ug6"]
+[ext_resource type="Texture2D" uid="uid://dmpqulm6j3nd1" path="res://Sprites/Kitchen/Cakes/GrumpyFlowerCake.png" id="9_12rv7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx6gk"]
 
-[node name="EndScreen" type="Node"]
+[node name="EndScreen" type="Node" node_paths=PackedStringArray("cakeNameLabels")]
 script = ExtResource("1_xop7r")
+cakeTextures = {
+"Bone": ExtResource("3_t1pu3"),
+"Energy Drink": ExtResource("4_kot2w"),
+"Eyeball": ExtResource("2_5803j"),
+"Fun Guys": ExtResource("5_3unxw"),
+"Grumpy Flower": ExtResource("9_12rv7"),
+"Lizard": ExtResource("7_iye2w"),
+"Mr. Fluffy": ExtResource("3_cstu0"),
+"Tentacle": ExtResource("8_j3ug6")
+}
+cakeNameLabels = []
 
-[node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_dwysl")
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Objects"]
+texture = ExtResource("2_72lrw")
+centered = false
+
+[node name="Cake" type="Sprite2D" parent="Objects"]
+position = Vector2(193, 46)
+texture = ExtResource("3_cstu0")
 centered = false
 
 [node name="UI" type="Control" parent="."]
@@ -25,38 +51,65 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_ry5ch")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(180.1, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UI/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(168, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rb2hb")
 text = "Your Recipe"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kx6gk")
 vertical_scroll_mode = 0
 
-[node name="Label2" type="Label" parent="UI/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="Label2" type="Label" parent="UI/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_88lhi")
 text = "1. Put 99 Cooked Grumpy Flower in a bowl"
 autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Title1" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_88lhi")
+text = "The High Maintenance"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Grumpy Flower"
+horizontal_alignment = 1
+
+[node name="Title3" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Epiphany"
+horizontal_alignment = 1
