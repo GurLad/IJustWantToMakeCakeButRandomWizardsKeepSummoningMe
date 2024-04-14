@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cnhb0plmhtnp1"]
+[gd_scene load_steps=41 format=3 uid="uid://cnhb0plmhtnp1"]
 
 [ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenRoomController.cs" id="1_k0vn7"]
@@ -29,11 +29,13 @@
 [ext_resource type="AudioStream" uid="uid://b05qnr50sbcrt" path="res://SFX/ChangeRoom.mp3" id="22_5vdfr"]
 [ext_resource type="PackedScene" uid="uid://cppfic8fmooo5" path="res://Scenes/Kitchen/Objects/StirObject.tscn" id="22_rdrhg"]
 [ext_resource type="Texture2D" uid="uid://cyim1h4tq36l" path="res://Sprites/Kitchen/Objects/Kitchen/MixingSpoon.png" id="23_0saov"]
+[ext_resource type="AudioStream" uid="uid://bpghewbiuwhqe" path="res://SFX/Stir3.mp3" id="24_bk7dt"]
 [ext_resource type="PackedScene" uid="uid://btscd4a4bqfva" path="res://Scenes/Kitchen/Objects/OvenObject.tscn" id="24_kxsm6"]
 [ext_resource type="AudioStream" uid="uid://faqvomik68gk" path="res://SFX/Trashed.mp3" id="24_stth1"]
 [ext_resource type="Texture2D" uid="uid://yjijym6jvocs" path="res://Sprites/Kitchen/Objects/Kitchen/Oven.png" id="25_s087e"]
 [ext_resource type="Texture2D" uid="uid://bcv1plhpco11x" path="res://Sprites/Kitchen/Backgrounds/Recipe.png" id="26_r0umv"]
 [ext_resource type="PackedScene" uid="uid://dekw4qqelh5fw" path="res://Scenes/Kitchen/Objects/RecipeObject.tscn" id="27_1b08e"]
+[ext_resource type="AudioStream" uid="uid://b1j5kbmqnlud8" path="res://SFX/Bake3.wav" id="27_ci65j"]
 [ext_resource type="Texture2D" uid="uid://xyh64q2nbbvq" path="res://Sprites/TopUI/SmallQuitIcon.png" id="28_uwqro"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenController.cs" id="29_rj4ev"]
 [ext_resource type="Material" uid="uid://dfe5d71kr1ngy" path="res://Shaders/BlackOutlineMaterial.tres" id="30_nxjsv"]
@@ -115,7 +117,6 @@ finishSFX = ExtResource("5_y6idf")
 tooltip = "Energy Drink"
 
 [node name="Kitchen" type="Node2D" parent="Rooms"]
-visible = false
 
 [node name="Background" type="Sprite2D" parent="Rooms/Kitchen"]
 position = Vector2(160, 90)
@@ -153,6 +154,7 @@ texture = ExtResource("23_0saov")
 kitchenController = NodePath("../../../../KitchenTeleporter")
 bowl = NodePath("../Bowl")
 time = 1.5
+workingSFX = ExtResource("24_bk7dt")
 tooltip = "Stir"
 
 [node name="OvenObject" parent="Rooms/Kitchen/Objects" node_paths=PackedStringArray("kitchenController") instance=ExtResource("24_kxsm6")]
@@ -160,6 +162,7 @@ position = Vector2(229, 130)
 texture = ExtResource("25_s087e")
 kitchenController = NodePath("../../../../KitchenTeleporter")
 time = 4.0
+workingSFX = ExtResource("27_ci65j")
 tooltip = "Bake (FINISH GAME)"
 tooltipOffset = -30.0
 tooltipOffsetX = -100.0
