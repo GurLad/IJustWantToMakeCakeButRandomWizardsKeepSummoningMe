@@ -9,7 +9,7 @@ public partial class GlowingQuestionMark : Label
     public override void _Process(double delta)
     {
         base._Process(delta);
-        float percent = (Mathf.Sin((Time.GetTicksMsec() / 1000f) * rate * Mathf.Pi) + 1) / 2;
+        float percent = ExtensionMethods.SinTime(rate);
         SelfModulate = new Color(SelfModulate, percent * (1 - minOpacity) + minOpacity);
     }
 }

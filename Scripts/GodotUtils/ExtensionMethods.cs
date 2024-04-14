@@ -54,6 +54,11 @@ public static class ExtensionMethods
         return (float)(1 - timer.TimeLeft / timer.WaitTime);
     }
 
+    public static float SinTime(float rate)
+    {
+        return (Mathf.Sin((Time.GetTicksMsec() / 1000f) * rate * Mathf.Pi) + 1) / 2;
+    }
+
     // Json
 
     public static string ToJson<T>(this T obj, bool prettyPrint = true)
