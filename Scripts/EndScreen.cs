@@ -23,12 +23,12 @@ public partial class EndScreen : Node
     {
         base._Ready();
         KitchenController.KitchenSaveState kitchenState = KitchenController.GetFinalSaveState();
-        recipeLabel.Text = GenerateRecipe(kitchenState, GenerateCakeName(kitchenState));
         string[] cakeNameParts = GenerateCakeNameParts(kitchenState);
         for (int i = 0; i < Mathf.Min(cakeNameLabels.Length, cakeNameParts.Length); i++)
         {
             cakeNameLabels[i].Text = cakeNameParts[i];
         }
+        recipeLabel.Text = GenerateRecipe(kitchenState, string.Join(" ", cakeNameParts).Substring(4));
         if (cakeTextures.ContainsKey(cakeNameParts[1]))
         {
             cakeSprite.Texture = cakeTextures[cakeNameParts[1]];
@@ -69,6 +69,14 @@ public partial class EndScreen : Node
             {
                 total += ingredient.Count;
                 stateCount[ingredient.State] += ingredient.Count;
+                if (!typesCount.ContainsKey(ingredient.Name))
+                {
+                    typesCount.Add(ingredient.Name, ingredient.Count);
+                }
+                else
+                {
+                    typesCount[ingredient.Name] += ingredient.Count;
+                }
             }
         }
         IngredientState finalState = IngredientState.Normal;
@@ -93,20 +101,20 @@ public partial class EndScreen : Node
         string result = "";
         int lineNumber = 1;
 
-        void AddLine(string line) => result += lineNumber + ". " + line + "\n";
+        void AddLine(string line) => result += (lineNumber++) + ". " + line + "\n";
 
         for (int i = 0; i < kitchenState.CakeParts.Count; i++)
         {
             List<Ingredient> stirBlock = kitchenState.CakeParts[i];
             foreach (Ingredient ingredient in stirBlock)
             {
-                AddLine("Put " + ingredient.ToString() + " in a bowl");
+                AddLine("Put " + FixName(ingredient.ToString()) + " in a bowl.");
             }
             AddLine(i == 0 ? "Stir" : (i == 1 ? "Stir again" : "Stir yet again"));
         }
         foreach (Ingredient ingredient in kitchenState.BowlContents)
         {
-            AddLine("Put " + ingredient.ToString() + " in a bowl");
+            AddLine("Put " + FixName(ingredient.ToString()) + " in a bowl.");
         }
         AddLine("Put everything in the oven.");
         AddLine("Bake for 30 minutes.");
