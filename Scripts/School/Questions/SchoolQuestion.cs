@@ -39,6 +39,7 @@ public partial class SchoolQuestion : Control
                 }
                 else
                 {
+                    SchoolController.Mistakes++;
                     FloatingX.Display(sceneFloatingX, label.Position + new Vector2(RNG.Next(-2, 3) + PivotOffset.X, 0), this);
                 }
             }

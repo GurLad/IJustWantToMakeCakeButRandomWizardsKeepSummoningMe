@@ -4,6 +4,8 @@ using static ExtensionMethods;
 
 public partial class SchoolController : Node
 {
+    public static int Mistakes = 0;
+
     [Export] private ASchoolSubActivityController equationsController;
     [Export] private ASchoolSubActivityController questionsController;
     [Export] private float questionsRate = 0.3f;

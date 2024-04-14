@@ -113,9 +113,9 @@ offset_bottom = 55.0
 
 [node name="SpawnPoint5" type="Control" parent="UI/Questions"]
 anchors_preset = 0
-offset_left = 29.0
+offset_left = 32.0
 offset_top = 105.0
-offset_right = 33.0
+offset_right = 36.0
 offset_bottom = 110.0
 
 [node name="SpawnPoint6" type="Control" parent="UI/Questions"]

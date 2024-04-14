@@ -62,6 +62,7 @@ public partial class SchoolEquation : Label
                 }
                 else
                 {
+                    SchoolController.Mistakes++;
                     FloatingX.Display(sceneFloatingX, questionMark.Position + new Vector2(RNG.Next(-2, 3), 0), this);
                 }
             }
