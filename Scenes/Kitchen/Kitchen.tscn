@@ -107,7 +107,7 @@ position = Vector2(159, 2)
 texture = ExtResource("11_xc2hv")
 name = "GrumpyFlower"
 finishSFX = ExtResource("5_y6idf")
-tooltip = "Happy Flowers"
+tooltip = "Grumpy Flowers"
 
 [node name="EnergyDrink" parent="Rooms/Shelves/Objects" instance=ExtResource("2_4p184")]
 position = Vector2(218, 30)

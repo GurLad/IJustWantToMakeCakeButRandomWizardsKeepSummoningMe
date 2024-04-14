@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfge6qc2dmdj1"]
+
+[ext_resource type="Script" path="res://Scripts/Kitchen/KitchenObjects/KOQuit.cs" id="1_3eeg6"]
+[ext_resource type="Material" uid="uid://cyjyxfqfe7q12" path="res://Shaders/OutlineMaterial.tres" id="2_e73rk"]
+[ext_resource type="PackedScene" uid="uid://cdwxtngospdco" path="res://Scenes/Kitchen/UI/Tooltip.tscn" id="3_cq3a6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axgpv"]
+radius = 0.01
+
+[node name="QuitGameObject" type="Sprite2D" node_paths=PackedStringArray("area", "collisionShape", "tooltipObject")]
+centered = false
+script = ExtResource("1_3eeg6")
+area = NodePath("Area2D")
+collisionShape = NodePath("Area2D/CollisionShape2D")
+tooltipObject = NodePath("Tooltip")
+outlineMaterial = ExtResource("2_e73rk")
+
+[node name="Tooltip" parent="." instance=ExtResource("3_cq3a6")]
+offset_left = -16.5
+offset_top = -9.5
+offset_right = 16.5
+offset_bottom = 9.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_axgpv")

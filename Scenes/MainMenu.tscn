@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ihmbbtf7lhbv"]
+
+[ext_resource type="Texture2D" uid="uid://csmrhwv3hg25m" path="res://Sprites/Misc/MenuBackground.png" id="1_hfmhh"]
+[ext_resource type="PackedScene" uid="uid://g6v22g74gr8" path="res://Scenes/Kitchen/Objects/ChangeSceneObject.tscn" id="2_rqp28"]
+[ext_resource type="Texture2D" uid="uid://y80xbpxyq5hj" path="res://Sprites/Misc/StartButton.png" id="3_3sb66"]
+[ext_resource type="PackedScene" uid="uid://bfge6qc2dmdj1" path="res://Scenes/Kitchen/Objects/QuitGameObject.tscn" id="4_xa5jw"]
+[ext_resource type="Texture2D" uid="uid://c3d171hxwv3os" path="res://Sprites/Misc/QuitButton.png" id="5_yiaux"]
+
+[node name="MainMenu" type="Node"]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Objects"]
+texture = ExtResource("1_hfmhh")
+centered = false
+
+[node name="ChangeSceneObject" parent="Objects" instance=ExtResource("2_rqp28")]
+position = Vector2(44, 86)
+texture = ExtResource("3_3sb66")
+sceneName = "Kitchen"
+
+[node name="QuitGameObject" parent="Objects" instance=ExtResource("4_xa5jw")]
+position = Vector2(69, 142)
+texture = ExtResource("5_yiaux")
