@@ -56,6 +56,7 @@ public partial class SchoolQuestion : Control
             0,
             1,
             Easing.EaseOutBack));
+        Scale = Vector2.Zero;
         interpolator.OnFinish = () => ready = true;
     }
 

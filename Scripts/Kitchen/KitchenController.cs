@@ -40,6 +40,7 @@ public partial class KitchenController : Node
         }
         Hand.Current.BeganTimedAction += BeginTimedAction;
         Hand.Current.FinishedTimedAction += FinishTimedAction;
+        Hand.Current.CancledTimedAction += FinishTimedAction;
         GD.Print(saveState);
     }
 
@@ -48,6 +49,7 @@ public partial class KitchenController : Node
         base._ExitTree();
         Hand.Current.BeganTimedAction -= BeginTimedAction;
         Hand.Current.FinishedTimedAction -= FinishTimedAction;
+        Hand.Current.CancledTimedAction -= FinishTimedAction;
     }
 
     public void AddCakeIngredients(List<Ingredient> ingredients)

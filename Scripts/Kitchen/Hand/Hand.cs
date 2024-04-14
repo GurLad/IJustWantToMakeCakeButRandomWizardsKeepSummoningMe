@@ -25,6 +25,9 @@ public partial class Hand : Control
     [Signal]
     public delegate void FinishedTimedActionEventHandler();
 
+    [Signal]
+    public delegate void CancledTimedActionEventHandler();
+
     public override void _Ready()
     {
         base._Ready();
@@ -59,6 +62,7 @@ public partial class Hand : Control
                     interpolator.Stop(false);
                     cursor.SetNormal();
                     currentWorkingObject?.StopAction();
+                    EmitSignal(SignalName.CancledTimedAction);
                 }
             }
         }
