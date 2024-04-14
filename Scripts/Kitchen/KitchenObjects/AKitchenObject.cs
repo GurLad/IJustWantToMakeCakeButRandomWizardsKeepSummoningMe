@@ -6,6 +6,7 @@ public abstract partial class AKitchenObject : Sprite2D
     [Export] protected AudioStream finishSFX;
     [Export] private string tooltip;
     [Export] private float tooltipOffset = 3f;
+    [Export] private float tooltipOffsetX = 0f;
     [ExportGroup("Internal")]
     [Export] private float tooltipFadeInDelay = 0.1f;
     [Export] private float tooltipFadeTime = 0.2f;
@@ -32,7 +33,7 @@ public abstract partial class AKitchenObject : Sprite2D
         // Tooltip
         tooltipObject.Text = tooltip;
         tooltipObject.Alpha = 0;
-        tooltipObject.Position += new Vector2(0, (trueShape.Size.Y + tooltipObject.Size.Y) / 2 + tooltipOffset);
+        tooltipObject.Position += new Vector2(tooltipOffsetX, (trueShape.Size.Y + tooltipObject.Size.Y) / 2 + tooltipOffset);
         tooltipObject.Visible = true;
         // Blegh
         area.MouseEntered += () => { if (Hand.Current != null) Hand.Current.EnterKitchenObject(this); };

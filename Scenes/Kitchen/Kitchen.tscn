@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnhb0plmhtnp1"]
+[gd_scene load_steps=34 format=3 uid="uid://cnhb0plmhtnp1"]
 
 [ext_resource type="Texture2D" uid="uid://fcasfky5qp6k" path="res://Sprites/Kitchen/Backgrounds/ShelvesWithItems.png" id="1_go4tn"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenRoomController.cs" id="1_k0vn7"]
@@ -29,7 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://b05qnr50sbcrt" path="res://SFX/ChangeRoom.mp3" id="22_5vdfr"]
 [ext_resource type="PackedScene" uid="uid://cppfic8fmooo5" path="res://Scenes/Kitchen/Objects/StirObject.tscn" id="22_rdrhg"]
 [ext_resource type="Texture2D" uid="uid://cyim1h4tq36l" path="res://Sprites/Kitchen/Objects/Kitchen/MixingSpoon.png" id="23_0saov"]
+[ext_resource type="PackedScene" uid="uid://btscd4a4bqfva" path="res://Scenes/Kitchen/Objects/OvenObject.tscn" id="24_kxsm6"]
 [ext_resource type="AudioStream" uid="uid://faqvomik68gk" path="res://SFX/Trashed.mp3" id="24_stth1"]
+[ext_resource type="Texture2D" uid="uid://yjijym6jvocs" path="res://Sprites/Kitchen/Objects/Kitchen/Oven.png" id="25_s087e"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/KitchenController.cs" id="29_rj4ev"]
 
 [node name="Kitchen" type="Node"]
@@ -145,6 +147,15 @@ bowl = NodePath("../Bowl")
 time = 1.5
 tooltip = "Stir"
 
+[node name="OvenObject" parent="Rooms/Kitchen/Objects" node_paths=PackedStringArray("kitchenController") instance=ExtResource("24_kxsm6")]
+position = Vector2(229, 130)
+texture = ExtResource("25_s087e")
+kitchenController = NodePath("../../../../KitchenTeleporter")
+time = 4.0
+tooltip = "Bake (FINISH GAME)"
+tooltipOffset = -30.0
+tooltipOffsetX = -100.0
+
 [node name="FadeTransition" type="ColorRect" parent="."]
 visible = false
 anchors_preset = 15
@@ -179,6 +190,7 @@ texture = ExtResource("14_bw1xj")
 time = 1.0
 finishSFX = ExtResource("24_stth1")
 
-[node name="KitchenTeleporter" type="Node" parent="."]
+[node name="KitchenTeleporter" type="Node" parent="." node_paths=PackedStringArray("oven")]
 script = ExtResource("29_rj4ev")
 TeleportRate = Vector2(12, 20)
+oven = NodePath("../Rooms/Kitchen/Objects/OvenObject")

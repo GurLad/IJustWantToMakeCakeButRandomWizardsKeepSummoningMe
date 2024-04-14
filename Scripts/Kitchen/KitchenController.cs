@@ -8,6 +8,7 @@ public partial class KitchenController : Node
     private static KitchenSaveState saveState = new KitchenSaveState();
 
     [Export] private Vector2 TeleportRate;
+    [Export] private KOOven oven;
 
     private Timer timer = new Timer();
     private bool readyToTeleport = false;
@@ -30,6 +31,10 @@ public partial class KitchenController : Node
             timer.Timeout += TryToTeleport;
             timer.Start();
         }
+        else
+        {
+            oven.Visible = false;
+        }
         Hand.Current.BeganTimedAction += BeginTimedAction;
         Hand.Current.FinishedTimedAction += FinishTimedAction;
         GD.Print(saveState);
@@ -50,6 +55,15 @@ public partial class KitchenController : Node
     public void ConnectBowl(KOBowl bowl)
     {
         bowl.Ingredients = saveState.BowlContents;
+    }
+
+    public void Kill()
+    {
+        // Overkill
+        middleOfAction = true;
+        timer.Stop();
+        readyToTeleport = false;
+        QueueFree();
     }
 
     private void BeginTimedAction()

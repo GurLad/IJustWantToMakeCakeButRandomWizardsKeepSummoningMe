@@ -76,7 +76,7 @@ public partial class EndScreen : Node
         finalState |= stateCount[IngredientState.Cut] > stateCount[IngredientState.Normal] ? IngredientState.Cut : IngredientState.Normal;
         //finalState |= stateCount[IngredientState.Wet] > stateCount[IngredientState.Normal] ? IngredientState.Wet : IngredientState.Normal;
         List<string> sortedKeys = typesCount.Keys.ToList();
-        sortedKeys.Sort((a, b) => typesCount[a].CompareTo(typesCount[b]));
+        sortedKeys.Sort((a, b) => -typesCount[a].CompareTo(typesCount[b]));
         result[0] = "The " + STATE_TITLES[finalState].RandomItemInList();
         result[1] = sortedKeys.Count > 0 ? FixName(sortedKeys[0]) : "Nothing";
         result[2] = CAKE_TITLES.RandomItemInList();
