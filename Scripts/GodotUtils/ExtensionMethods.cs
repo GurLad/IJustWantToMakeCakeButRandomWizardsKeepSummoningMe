@@ -168,4 +168,18 @@ public static class ExtensionMethods
             action(list[i], i);
         }
     }
+
+    // Enums
+
+    public static string ToDisplayName(this IngredientState state)
+    {
+        return state switch
+        {
+            IngredientState.Normal => "",
+            IngredientState.Burned => "Cooked ",
+            IngredientState.Cut => "Cut ",
+            IngredientState.Wet => "Wet ",
+            _ => "Crazy ",
+        };
+    }
 }

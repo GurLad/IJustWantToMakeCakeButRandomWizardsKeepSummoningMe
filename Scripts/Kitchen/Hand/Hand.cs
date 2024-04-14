@@ -35,6 +35,10 @@ public partial class Hand : Control
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
+        if (!IsInstanceValid(currentKitchenObject))
+        {
+            currentKitchenObject = null;
+        }
         if (@event is InputEventMouseButton mouseButtonEvent)
         {
             if (mouseButtonEvent.ButtonIndex == MouseButton.Left && !mouseButtonEvent.IsEcho())
@@ -66,6 +70,10 @@ public partial class Hand : Control
 
     public void EnterKitchenObject(AKitchenObject kitchenObject)
     {
+        if (!IsInstanceValid(currentKitchenObject))
+        {
+            currentKitchenObject = null;
+        }
         if (currentKitchenObject != null)
         {
             currentKitchenObject.Leave(this);

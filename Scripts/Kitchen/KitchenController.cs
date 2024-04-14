@@ -25,6 +25,7 @@ public partial class KitchenController : Node
         }
         Hand.Current.BeganTimedAction += BeginTimedAction;
         Hand.Current.FinishedTimedAction += FinishTimedAction;
+        GD.Print(saveState);
     }
 
     public override void _ExitTree()
@@ -37,6 +38,11 @@ public partial class KitchenController : Node
     public void AddCakeIngredients(List<Ingredient> ingredients)
     {
         saveState.CakeParts.Add(new List<Ingredient>(ingredients));
+    }
+
+    public void ConnectBowl(KOBowl bowl)
+    {
+        bowl.Ingredients = saveState.BowlContents;
     }
 
     private void BeginTimedAction()
@@ -75,6 +81,13 @@ public partial class KitchenController : Node
     private class KitchenSaveState
     {
         public bool FirstTime = true;
+        public List<Ingredient> BowlContents = new List<Ingredient>();
         public List<List<Ingredient>> CakeParts = new List<List<Ingredient>>();
+
+        public override string ToString()
+        {
+            return "First time: " + FirstTime + "\nBowl:\n" + string.Join("\n", BowlContents) +
+                "\nCake:\n" + string.Join("\nStirred\n", CakeParts.ConvertAll(a => string.Join("\n", BowlContents)));
+        }
     }
 }

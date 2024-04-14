@@ -127,9 +127,10 @@ time = 1.0
 workingSFX = ExtResource("14_k0kod")
 tooltip = "Cook"
 
-[node name="Bowl" parent="Rooms/Kitchen/Objects" instance=ExtResource("13_4hqrj")]
+[node name="Bowl" parent="Rooms/Kitchen/Objects" node_paths=PackedStringArray("kitchenController") instance=ExtResource("13_4hqrj")]
 position = Vector2(109, 61)
 texture = ExtResource("14_pjkiw")
+kitchenController = NodePath("../../../../KitchenTeleporter")
 time = 0.5
 finishSFX = ExtResource("17_lil8d")
 tooltip = "Add to Cake"

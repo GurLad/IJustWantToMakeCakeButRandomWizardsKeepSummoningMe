@@ -31,4 +31,9 @@ public class Ingredient
     {
         return Data.Icons[State];
     }
+
+    public override string ToString()
+    {
+        return Count + " X " + State.ToDisplayName() + Name;
+    }
 }

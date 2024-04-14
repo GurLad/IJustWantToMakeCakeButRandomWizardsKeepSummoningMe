@@ -4,9 +4,16 @@ using System.Collections.Generic;
 
 public partial class KOBowl : ATimedKitchenObject
 {
-    public bool IsEmpty => ingredients.Count <= 0;
+    public List<Ingredient> Ingredients { private get; set; } = new List<Ingredient>();
+    public bool IsEmpty => Ingredients.Count <= 0;
 
-    private List<Ingredient> ingredients { get; } = new List<Ingredient>();
+    [Export] private KitchenController kitchenController;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        kitchenController?.ConnectBowl(this);
+    }
 
     public override bool CanInteract(Hand hand)
     {
@@ -15,13 +22,13 @@ public partial class KOBowl : ATimedKitchenObject
 
     protected override void InteractAction(Hand hand)
     {
-        ingredients.AddRange(hand.TakeAllIngredients());
+        Ingredients.AddRange(hand.TakeAllIngredients());
     }
 
     public List<Ingredient> TakeAllIngredients()
     {
-        List<Ingredient> result = new List<Ingredient>(ingredients);
-        ingredients.Clear();
+        List<Ingredient> result = new List<Ingredient>(Ingredients);
+        Ingredients.Clear();
         return result;
     }
 }
