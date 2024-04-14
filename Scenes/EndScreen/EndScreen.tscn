@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxwf61nkoertd"]
+[gd_scene load_steps=21 format=3 uid="uid://bxwf61nkoertd"]
 
 [ext_resource type="Theme" uid="uid://brjpju15xwg3w" path="res://MainTheme.tres" id="1_ry5ch"]
 [ext_resource type="Script" path="res://Scripts/EndScreen.cs" id="1_xop7r"]
@@ -14,7 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://eqh41031wbup" path="res://Sprites/Kitchen/Cakes/TentacleCake.png" id="8_j3ug6"]
 [ext_resource type="Texture2D" uid="uid://dmpqulm6j3nd1" path="res://Sprites/Kitchen/Cakes/GrumpyFlowerCake.png" id="9_12rv7"]
 [ext_resource type="Texture2D" uid="uid://bd8oi46jhqwn2" path="res://Sprites/Kitchen/Cakes/PerfectCake.png" id="10_vwr11"]
+[ext_resource type="PackedScene" uid="uid://bfge6qc2dmdj1" path="res://Scenes/Kitchen/Objects/QuitGameObject.tscn" id="12_hx06o"]
 [ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="12_p2ekj"]
+[ext_resource type="Texture2D" uid="uid://xyh64q2nbbvq" path="res://Sprites/TopUI/SmallQuitIcon.png" id="13_6a5eb"]
+[ext_resource type="PackedScene" uid="uid://g6v22g74gr8" path="res://Scenes/Kitchen/Objects/ChangeSceneObject.tscn" id="14_gk1o4"]
+[ext_resource type="Texture2D" uid="uid://c1rkagt3mdhhk" path="res://Sprites/TopUI/RestartIcon.png" id="15_v732m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx6gk"]
 
@@ -46,6 +50,15 @@ centered = false
 [node name="Cake" type="Sprite2D" parent="Objects"]
 position = Vector2(193, 46)
 centered = false
+
+[node name="QuitGameObject" parent="Objects" instance=ExtResource("12_hx06o")]
+position = Vector2(280, 148)
+texture = ExtResource("13_6a5eb")
+
+[node name="ChangeSceneObject" parent="Objects" instance=ExtResource("14_gk1o4")]
+position = Vector2(173, 148)
+texture = ExtResource("15_v732m")
+sceneName = "Kitchen"
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -151,7 +164,7 @@ text = "Epiphany"
 horizontal_alignment = 1
 
 [node name="Seperator" type="Control" parent="UI/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 73)
 layout_mode = 2
 
 [node name="SumMistakes" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
