@@ -5,7 +5,7 @@ using System.Text.Json;
 
 public static class ExtensionMethods
 {
-    //private static readonly Random rng = new Random();
+    public static readonly Random RNG = new Random();
 
     // Math
 

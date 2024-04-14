@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://nqu4bgsr0jum"]
+
+[ext_resource type="Texture2D" uid="uid://ky41o1n37to1" path="res://Sprites/School/School4BGProblems.png" id="1_palxy"]
+[ext_resource type="Texture2D" uid="uid://118dm1q04d53" path="res://Sprites/School/School4BGQuestions.png" id="2_fupto"]
+[ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="3_ue4jd"]
+[ext_resource type="Script" path="res://Scripts/School/Equations/SchoolEquationsController.cs" id="4_u0gdm"]
+[ext_resource type="PackedScene" uid="uid://cp5sfdyritjwh" path="res://Scenes/School/UI/Equation.tscn" id="5_yd0h1"]
+
+[node name="School" type="Node"]
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="Writing" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(160, 90)
+texture = ExtResource("1_palxy")
+
+[node name="Answering" type="Sprite2D" parent="Backgrounds"]
+visible = false
+position = Vector2(160, 90)
+texture = ExtResource("2_fupto")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ue4jd")
+
+[node name="Equations" type="Control" parent="UI" node_paths=PackedStringArray("containers")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 7.0
+offset_right = 75.0
+offset_bottom = 87.0
+grow_horizontal = 2
+script = ExtResource("4_u0gdm")
+sceneEquation = ExtResource("5_yd0h1")
+containers = [NodePath("MarginContainer/HBoxContainer/VBoxContainer"), NodePath("MarginContainer/HBoxContainer/VBoxContainer2")]
+count = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Equations"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Equations/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Equations/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Equations/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10

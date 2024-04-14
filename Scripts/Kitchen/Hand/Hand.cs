@@ -47,9 +47,7 @@ public partial class Hand : Control
                     }
                     else if (currentKitchenObject != null)
                     {
-                        FloatingX floatingX = sceneFloatingX.Instantiate<FloatingX>();
-                        GetParent().AddChild(floatingX);
-                        floatingX.Display(Position);
+                        FloatingX.Display(sceneFloatingX, Position, GetParent());
                     }
                 }
                 else if (interpolator.Active)

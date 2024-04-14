@@ -9,10 +9,23 @@ public partial class FloatingX : Node
     [Export] private float FadeTime = 0.2f;
     private Interpolator interpolator = new Interpolator();
 
+    public static void Display(PackedScene sceneFloatingX, Vector2 position, Node parent)
+    {
+        FloatingX floatingX = sceneFloatingX.Instantiate<FloatingX>();
+        parent.AddChild(floatingX);
+        floatingX.Display(position);
+    }
+
     public override void _Ready()
     {
         base._Ready();
         AddChild(interpolator);
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        display.Position += Vector2.Up * UpSpeed * (float)delta;
     }
 
     public void Display(Vector2 pos)
@@ -32,11 +45,5 @@ public partial class FloatingX : Node
                     0));
             interpolator.OnFinish = () => QueueFree();
         };
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        display.Position += Vector2.Up * UpSpeed * (float)delta;
     }
 }

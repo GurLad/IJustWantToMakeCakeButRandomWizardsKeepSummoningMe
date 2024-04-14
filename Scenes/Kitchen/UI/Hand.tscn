@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/Hand.cs" id="1_81jkx"]
 [ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_ysyvf"]
 [ext_resource type="Texture2D" uid="uid://uvn1tpldr1o3" path="res://Sprites/Misc/Cursor.png" id="2_jgn01"]
-[ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/Kitchen/UI/FloatingX.tscn" id="2_pqa77"]
+[ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/FloatingX.tscn" id="2_pqa77"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Hand/HandCursor.cs" id="3_iwhhx"]
 [ext_resource type="Texture2D" uid="uid://ddbdyu4mnwy2c" path="res://Sprites/Misc/WorkingCursorBelow.png" id="4_wr2q2"]
 [ext_resource type="Script" path="res://Scripts/Kitchen/Ingredients/IngredientsDisplay.cs" id="4_yqc2r"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp5sfdyritjwh"]
+
+[ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_6ikji"]
+[ext_resource type="Script" path="res://Scripts/School/Equations/SchoolEquation.cs" id="2_7ar14"]
+[ext_resource type="Script" path="res://Scripts/School/GlowingQuestionMark.cs" id="2_w8bxm"]
+[ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/FloatingX.tscn" id="3_nvidf"]
+
+[node name="Equation" type="Label" node_paths=PackedStringArray("questionMark")]
+custom_minimum_size = Vector2(36, 0)
+offset_right = 36.0
+offset_bottom = 13.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_6ikji")
+text = "8+8=?"
+script = ExtResource("2_7ar14")
+questionMark = NodePath("QuestionMark")
+sceneFloatingX = ExtResource("3_nvidf")
+
+[node name="QuestionMark" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.806
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0160027
+grow_horizontal = 0
+text = "?"
+script = ExtResource("2_w8bxm")
+minOpacity = 0.2
+rate = 0.8

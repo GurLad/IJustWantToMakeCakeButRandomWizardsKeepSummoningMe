@@ -1,0 +1,52 @@
+using Godot;
+using System;
+using static ExtensionMethods;
+
+public partial class SchoolEquation : Label
+{
+    [Export] private GlowingQuestionMark questionMark;
+    [Export] private PackedScene sceneFloatingX;
+
+    private int answer;
+    private bool selected = false;
+
+    [Signal]
+    public delegate void AnsweredEventHandler();
+
+    public void Init()
+    {
+        int num1 = RNG.Next(0, 10);
+        int num2 = RNG.Next(0, 10 - num1);
+        answer = num1 + num2;
+        Text = num1 + "+" + num2;
+        questionMark.Visible = false;
+    }
+
+    public void Select()
+    {
+        Text += "=";
+        questionMark.Visible = true;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (selected && @event is InputEventKey keyEvent)
+        {
+            if (keyEvent.KeyLabel >= Key.Key0 && keyEvent.KeyLabel <= Key.Key9)
+            {
+                if (keyEvent.KeyLabel - Key.Key0 == answer)
+                {
+                    questionMark.Visible = false;
+                    Text += answer;
+                    selected = false;
+                    EmitSignal(SignalName.Answered);
+                }
+                else
+                {
+                    FloatingX.Display(sceneFloatingX, questionMark.Position + new Vector2(RNG.Next(-2, 3), 0), this);
+                }
+            }
+        }
+    }
+}
