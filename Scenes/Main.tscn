@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgkgukktrn5eq"]
+[gd_scene load_steps=12 format=3 uid="uid://cgkgukktrn5eq"]
 
 [ext_resource type="Script" path="res://Scripts/GodotUtils/SceneController.cs" id="1_yerql"]
 [ext_resource type="PackedScene" uid="uid://cnhb0plmhtnp1" path="res://Scenes/Kitchen/Kitchen.tscn" id="2_wfkoy"]
@@ -9,15 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://bxwf61nkoertd" path="res://Scenes/EndScreen/EndScreen.tscn" id="4_rwtm6"]
 [ext_resource type="PackedScene" uid="uid://0xnta4ocfhhr" path="res://Scenes/Kitchen/UI/Hand.tscn" id="4_w8u8d"]
 [ext_resource type="Script" path="res://Scripts/MusicController.cs" id="5_icqy4"]
+[ext_resource type="PackedScene" uid="uid://ihmbbtf7lhbv" path="res://Scenes/MainMenu.tscn" id="5_oyc2x"]
 [ext_resource type="AudioStream" uid="uid://bnljsjpj0boa6" path="res://Music/MathEqualsTension.wav" id="7_fal6b"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("Timer", "SkullSplash", "ScenesNode", "TransitionSFXPlayer")]
 script = ExtResource("1_yerql")
 SkullRotateTimes = 1.0
-FirstScene = "Kitchen"
+FirstScene = "MainMenu"
 Scenes = {
 "EndScreen": ExtResource("4_rwtm6"),
 "Kitchen": ExtResource("2_wfkoy"),
+"MainMenu": ExtResource("5_oyc2x"),
 "School": ExtResource("3_phbn4")
 }
 Timer = NodePath("Timer")

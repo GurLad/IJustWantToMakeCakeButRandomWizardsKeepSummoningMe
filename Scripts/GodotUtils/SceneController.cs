@@ -32,8 +32,10 @@ public partial class SceneController : Node
         base._Ready();
         SkullSplash.PivotOffset = SkullSplash.Size / 2;
         Current = this;
-        TransitionToScene(FirstScene);
+        //TransitionToScene(FirstScene);
         //FinishFadeOut();
+        ScenesNode.AddChild(currentScene = Scenes[FirstScene].Instantiate<Node>());
+        FinishFadeIn();
     }
 
     public override void _Process(double delta)
