@@ -6,13 +6,21 @@ public partial class SchoolEquation : Label
 {
     [Export] private GlowingQuestionMark questionMark;
     [Export] private PackedScene sceneFloatingX;
+    [Export] private AudioStream correctAudioStream;
 
     private int answer;
     private bool selected = false;
     private int delayedSelect = -1;
+    private AudioStreamPlayer2D streamPlayer2D = new AudioStreamPlayer2D();
 
     [Signal]
     public delegate void AnsweredEventHandler();
+
+    public override void _Ready()
+    {
+        base._Ready();
+        AddChild(streamPlayer2D);
+    }
 
     public void Init()
     {
@@ -58,6 +66,8 @@ public partial class SchoolEquation : Label
                     Text += answer;
                     delayedSelect = -1;
                     selected = false;
+                    streamPlayer2D.Stream = correctAudioStream;
+                    streamPlayer2D.Play();
                     EmitSignal(SignalName.Answered);
                 }
                 else

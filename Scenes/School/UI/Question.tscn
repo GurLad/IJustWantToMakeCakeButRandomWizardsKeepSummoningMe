@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfs7e4qxfao8t"]
+[gd_scene load_steps=16 format=3 uid="uid://cfs7e4qxfao8t"]
 
 [ext_resource type="Texture2D" uid="uid://lp0mrdsg5grh" path="res://Sprites/School/UI/SpeechBubble.png" id="1_0biin"]
 [ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_vt88e"]
@@ -6,6 +6,15 @@
 [ext_resource type="Script" path="res://Scripts/School/Questions/SchoolQuestion.cs" id="3_fcsll"]
 [ext_resource type="Texture2D" uid="uid://r1ct3s4tuiiq" path="res://Sprites/School/UI/No.png" id="4_0fm28"]
 [ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/FloatingX.tscn" id="4_44u6x"]
+[ext_resource type="AudioStream" uid="uid://dgg4sa3ufcakw" path="res://SFX/Children/Ask1.mp3" id="5_xblkr"]
+[ext_resource type="AudioStream" uid="uid://beofaov00faux" path="res://SFX/Children/Ask2.mp3" id="6_etsju"]
+[ext_resource type="AudioStream" uid="uid://dy7d5klmf6nb" path="res://SFX/Children/Ask3.mp3" id="7_umgqp"]
+[ext_resource type="AudioStream" uid="uid://r81t5d7tictm" path="res://SFX/Children/Yes1.mp3" id="8_mp3b0"]
+[ext_resource type="AudioStream" uid="uid://cvk3l644420px" path="res://SFX/Children/Yes2.mp3" id="9_bjkjt"]
+[ext_resource type="AudioStream" uid="uid://cdepwefvlsr6s" path="res://SFX/Children/Yes3.mp3" id="10_fypn7"]
+[ext_resource type="AudioStream" uid="uid://1bc14chfnd7w" path="res://SFX/Children/No1.mp3" id="11_be25n"]
+[ext_resource type="AudioStream" uid="uid://r38f48qcrgmo" path="res://SFX/Children/No2.mp3" id="12_omkf1"]
+[ext_resource type="AudioStream" uid="uid://csdtttm1saakv" path="res://SFX/Children/No3.mp3" id="13_i5a5i"]
 
 [node name="Question" type="TextureRect" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(63, 23)
@@ -27,6 +36,9 @@ arriveTime = 0.7
 leaveTime = 0.7
 label = NodePath("MarginContainer/Equation")
 sceneFloatingX = ExtResource("4_44u6x")
+askSFX = Array[AudioStream]([ExtResource("5_xblkr"), ExtResource("6_etsju"), ExtResource("7_umgqp")])
+yesSFX = Array[AudioStream]([ExtResource("8_mp3b0"), ExtResource("9_bjkjt"), ExtResource("10_fypn7")])
+noSFX = Array[AudioStream]([ExtResource("11_be25n"), ExtResource("12_omkf1"), ExtResource("13_i5a5i")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

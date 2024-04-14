@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://75uuceta4qi7" path="res://SFX/Fire.mp3" id="14_k0kod"]
 [ext_resource type="Texture2D" uid="uid://dllxjh07g13dm" path="res://Sprites/Kitchen/Objects/Kitchen/Bowl.png" id="14_pjkiw"]
 [ext_resource type="Script" path="res://Scripts/FadeTransition.cs" id="15_5wmyo"]
-[ext_resource type="AudioStream" uid="uid://cyicyrrfcve52" path="res://SFX/AddToBowl.mp3" id="17_lil8d"]
+[ext_resource type="AudioStream" uid="uid://bpi2y0bskrcvk" path="res://SFX/AddToBowl2.mp3" id="21_llawj"]
 [ext_resource type="AudioStream" uid="uid://b05qnr50sbcrt" path="res://SFX/ChangeRoom.mp3" id="22_5vdfr"]
 [ext_resource type="PackedScene" uid="uid://cppfic8fmooo5" path="res://Scenes/Kitchen/Objects/StirObject.tscn" id="22_rdrhg"]
 [ext_resource type="Texture2D" uid="uid://cyim1h4tq36l" path="res://Sprites/Kitchen/Objects/Kitchen/MixingSpoon.png" id="23_0saov"]
@@ -145,7 +145,7 @@ position = Vector2(109, 61)
 texture = ExtResource("14_pjkiw")
 kitchenController = NodePath("../../../../KitchenTeleporter")
 time = 0.5
-finishSFX = ExtResource("17_lil8d")
+finishSFX = ExtResource("21_llawj")
 tooltip = "Add to Cake"
 
 [node name="StirObject" parent="Rooms/Kitchen/Objects" node_paths=PackedStringArray("kitchenController", "bowl") instance=ExtResource("22_rdrhg")]

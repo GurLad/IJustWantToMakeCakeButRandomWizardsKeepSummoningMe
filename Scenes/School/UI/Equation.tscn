@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp5sfdyritjwh"]
+[gd_scene load_steps=6 format=3 uid="uid://cp5sfdyritjwh"]
 
 [ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="1_6ikji"]
 [ext_resource type="Script" path="res://Scripts/School/Equations/SchoolEquation.cs" id="2_7ar14"]
 [ext_resource type="Script" path="res://Scripts/School/GlowingQuestionMark.cs" id="2_w8bxm"]
 [ext_resource type="PackedScene" uid="uid://cslil7gouvqc1" path="res://Scenes/FloatingX.tscn" id="3_nvidf"]
+[ext_resource type="AudioStream" uid="uid://i0ts3ercmv2l" path="res://SFX/WriteSFX.mp3" id="4_kdqgw"]
 
 [node name="Equation" type="Label" node_paths=PackedStringArray("questionMark")]
 custom_minimum_size = Vector2(36, 0)
@@ -16,6 +17,7 @@ text = "8+8=?"
 script = ExtResource("2_7ar14")
 questionMark = NodePath("QuestionMark")
 sceneFloatingX = ExtResource("3_nvidf")
+correctAudioStream = ExtResource("4_kdqgw")
 
 [node name="QuestionMark" type="Label" parent="."]
 layout_mode = 1

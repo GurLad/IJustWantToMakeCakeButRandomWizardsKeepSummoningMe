@@ -10,9 +10,14 @@ public partial class SchoolQuestion : Control
     [Export] private float leaveTime;
     [Export] private Label label;
     [Export] private PackedScene sceneFloatingX;
+    [ExportGroup("SFX")]
+    [Export] private AudioStream[] askSFX;
+    [Export] private AudioStream[] yesSFX;
+    [Export] private AudioStream[] noSFX;
 
-    private bool ready = false;
     private Interpolator interpolator = new Interpolator();
+    private AudioStreamPlayer2D streamPlayer2D = new AudioStreamPlayer2D();
+    private bool ready = false;
     private Vector2 baseScale;
     private bool correct;
 
@@ -23,6 +28,9 @@ public partial class SchoolQuestion : Control
     {
         base._Ready();
         AddChild(interpolator);
+        AddChild(streamPlayer2D);
+        streamPlayer2D.Stream = askSFX.RandomItemInList();
+        streamPlayer2D.Play();
         baseScale = Scale;
     }
 
@@ -63,6 +71,8 @@ public partial class SchoolQuestion : Control
     private void Leave()
     {
         ready = false;
+        streamPlayer2D.Stream = (correct ? yesSFX : noSFX).RandomItemInList();
+        streamPlayer2D.Play();
         interpolator.Interpolate(arriveTime, new Interpolator.InterpolateObject(
             a => Scale = baseScale * a,
             1,
