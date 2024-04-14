@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxwf61nkoertd"]
+[gd_scene load_steps=17 format=3 uid="uid://bxwf61nkoertd"]
 
 [ext_resource type="Theme" uid="uid://brjpju15xwg3w" path="res://MainTheme.tres" id="1_ry5ch"]
 [ext_resource type="Script" path="res://Scripts/EndScreen.cs" id="1_xop7r"]
@@ -13,11 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cmwlgpqmswmhi" path="res://Sprites/Kitchen/Cakes/LizardCake.png" id="7_iye2w"]
 [ext_resource type="Texture2D" uid="uid://eqh41031wbup" path="res://Sprites/Kitchen/Cakes/TentacleCake.png" id="8_j3ug6"]
 [ext_resource type="Texture2D" uid="uid://dmpqulm6j3nd1" path="res://Sprites/Kitchen/Cakes/GrumpyFlowerCake.png" id="9_12rv7"]
+[ext_resource type="Texture2D" uid="uid://bd8oi46jhqwn2" path="res://Sprites/Kitchen/Cakes/PerfectCake.png" id="10_vwr11"]
 [ext_resource type="Theme" uid="uid://bdop28dcwdbue" path="res://MiniTheme.tres" id="12_p2ekj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx6gk"]
 
-[node name="EndScreen" type="Node" node_paths=PackedStringArray("recipeLabel", "cakeNameLabels", "cakeSprite", "summingMistakesLabel")]
+[node name="EndScreen" type="Node" node_paths=PackedStringArray("recipeLabel", "cakeNameLabels", "cakeSprite", "summingMistakesLabel", "scoreLabel")]
 script = ExtResource("1_xop7r")
 cakeTextures = {
 "Bone": ExtResource("3_t1pu3"),
@@ -27,12 +28,14 @@ cakeTextures = {
 "Grumpy Flower": ExtResource("9_12rv7"),
 "Lizard": ExtResource("7_iye2w"),
 "Mr. Fluffy": ExtResource("3_cstu0"),
+"Perfect": ExtResource("10_vwr11"),
 "Tentacle": ExtResource("8_j3ug6")
 }
 recipeLabel = NodePath("UI/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Recipe")
 cakeNameLabels = [NodePath("UI/HBoxContainer/VBoxContainer/Title1"), NodePath("UI/HBoxContainer/VBoxContainer/Title2"), NodePath("UI/HBoxContainer/VBoxContainer/Title3")]
 cakeSprite = NodePath("Objects/Cake")
 summingMistakesLabel = NodePath("UI/HBoxContainer/VBoxContainer/SumMistakes")
+scoreLabel = NodePath("UI/HBoxContainer/VBoxContainer/Score")
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -157,4 +160,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_88lhi")
 text = "Summing Mistakes: {0}"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_88lhi")
+text = "Score: {0}%"
 horizontal_alignment = 1

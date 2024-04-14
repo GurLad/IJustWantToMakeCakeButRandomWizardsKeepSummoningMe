@@ -21,6 +21,6 @@ public static class IngredientController
 
     public static IngredientData GetData(string name)
     {
-        return datas.Find(a => a.Name == name) ?? throw new Exception("Missing ingredient! " + name));
+        return datas.Find(a => a.Name == name) ?? throw new Exception("Missing ingredient! " + name);
     }
 }
