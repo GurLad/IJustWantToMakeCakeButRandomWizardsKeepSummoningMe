@@ -19,6 +19,8 @@ public partial class SceneController : Node
     private Control SkullSplash;
     [Export]
     private Node ScenesNode;
+    [Export]
+    private AudioStreamPlayer TransitionSFXPlayer;
 
     private State state;
     private Node currentScene = null;
@@ -81,6 +83,8 @@ public partial class SceneController : Node
 
     public void Transition(Action midTransition, Action postTransition)
     {
+        TransitionSFXPlayer.Stop();
+        TransitionSFXPlayer.Play();
         SkullSplash.MouseFilter = Control.MouseFilterEnum.Stop;
         SkullSplash.Visible = true;
         this.midTransition = midTransition;
