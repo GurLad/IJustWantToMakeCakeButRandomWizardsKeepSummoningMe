@@ -10,7 +10,7 @@ public partial class EndScreen : Node
     {
         { IngredientState.Normal, new string[] { "Astonishingly Basic", "Definitely Normal", "Low Effort" } },
         { IngredientState.Burned, new string[] { "Flaming Hot", "Crispy Terror", "Jaw's Bane" } },
-        { IngredientState.Cut, new string[] { "Tasty Mush", "Salad Lover's", "Serial Murderer's" } },
+        { IngredientState.Cut, new string[] { "Tasty Mush", "Salad Lover's", "Serial Murderer's", "Very Edgy" } },
         { IngredientState.Burned | IngredientState.Cut, new string[] { "Summoner's Beloved", "Busy Bee's", "High Maintenance" } }
     };
     private static string[] CAKE_TITLES { get; } = new string[] { "Delight", "Wonder", "Dream", "Cake", "Epiphany" };

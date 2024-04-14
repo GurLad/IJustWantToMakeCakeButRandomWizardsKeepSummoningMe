@@ -64,6 +64,20 @@ public partial class SceneController : Node
         }
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (@event is InputEventKey keyEvent && !keyEvent.IsEcho() && keyEvent.Pressed)
+        {
+            if (keyEvent.Keycode == Key.Escape)
+            {
+                DisplayServer.WindowSetMode(DisplayServer.WindowGetMode() == DisplayServer.WindowMode.ExclusiveFullscreen ?
+                    DisplayServer.WindowMode.Windowed :
+                    DisplayServer.WindowMode.ExclusiveFullscreen);
+            }
+        }
+    }
+
     private void FinishFadeOut()
     {
         SkullSplash.Scale = Vector2.One;
