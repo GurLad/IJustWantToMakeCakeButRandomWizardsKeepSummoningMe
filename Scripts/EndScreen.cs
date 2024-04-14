@@ -29,7 +29,7 @@ public partial class EndScreen : Node
         new List<Ingredient>()
         {
             new Ingredient("GrumpyFlower", IngredientState.Normal, 15),
-            new Ingredient("MrFluffy", IngredientState.Normal, 1)
+            new Ingredient("MrFluffy", IngredientState.Burned, 1)
         }
     };
     private static List<Ingredient> PERFECT_BOWL_PARTS = new List<Ingredient>() { new Ingredient("Tentacle", IngredientState.Normal, 1) };
@@ -166,6 +166,7 @@ public partial class EndScreen : Node
         }
         max += 3 * PERFECT_BOWL_PARTS.Count;
         result += ScoreGroup(PERFECT_BOWL_PARTS, kitchenState.BowlContents);
+        GD.Print("Result: " + result + " / " + max);
         return (result + 0.0001f) / max;
     }
 
