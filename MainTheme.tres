@@ -21,16 +21,26 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kogg4"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukwhw"]
+texture = ExtResource("1_pfpma")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mia57"]
 texture = ExtResource("2_wnnhj")
 texture_margin_left = 4.0
 texture_margin_top = 1.0
 texture_margin_right = 3.0
-texture_margin_bottom = 3.0
+texture_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tuwro"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8ywl"]
+texture = ExtResource("2_wnnhj")
+texture_margin_left = 4.0
+texture_margin_top = 1.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
 
 [resource]
 default_font = ExtResource("1_0ae55")
@@ -42,6 +52,6 @@ VScrollBar/icons/increment_highlight = SubResource("ImageTexture_ep2i6")
 VScrollBar/icons/increment_pressed = SubResource("ImageTexture_ep2i6")
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_6aevi")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_panlh")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_kogg4")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_ukwhw")
 VScrollBar/styles/scroll = SubResource("StyleBoxTexture_mia57")
-VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_tuwro")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxTexture_j8ywl")
