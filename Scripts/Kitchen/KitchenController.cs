@@ -13,6 +13,13 @@ public partial class KitchenController : Node
     private bool readyToTeleport = false;
     private bool middleOfAction = false;
 
+    public static KitchenSaveState GetFinalSaveState()
+    {
+        KitchenSaveState temp = saveState;
+        saveState = new KitchenSaveState();
+        return temp;
+    }
+
     public override void _Ready()
     {
         base._Ready();
@@ -78,7 +85,7 @@ public partial class KitchenController : Node
         SceneController.Current.TransitionToScene("School");
     }
 
-    private class KitchenSaveState
+    public class KitchenSaveState
     {
         public bool FirstTime = true;
         public List<Ingredient> BowlContents = new List<Ingredient>();

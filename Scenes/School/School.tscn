@@ -13,7 +13,6 @@
 script = ExtResource("1_yu4fo")
 equationsController = NodePath("UI/Equations")
 questionsController = NodePath("UI/Questions")
-questionsRate = 0.4
 
 [node name="Backgrounds" type="Node2D" parent="."]
 
