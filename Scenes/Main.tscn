@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgkgukktrn5eq"]
+[gd_scene load_steps=9 format=3 uid="uid://cgkgukktrn5eq"]
 
 [ext_resource type="Script" path="res://Scripts/GodotUtils/SceneController.cs" id="1_yerql"]
 [ext_resource type="PackedScene" uid="uid://cnhb0plmhtnp1" path="res://Scenes/Kitchen/Kitchen.tscn" id="2_wfkoy"]
+[ext_resource type="PackedScene" uid="uid://nqu4bgsr0jum" path="res://Scenes/School/School.tscn" id="3_phbn4"]
 [ext_resource type="Texture2D" uid="uid://cmek8eauh7nx1" path="res://Sprites/Misc/SummoningSkullSplash.png" id="3_vjot4"]
 [ext_resource type="AudioStream" uid="uid://0wex47o8mp4f" path="res://Music/HomeSweetHome.wav" id="3_wrbom"]
 [ext_resource type="AudioStream" uid="uid://clg6mu71uqo6s" path="res://SFX/TransitionSFX.mp3" id="4_h5s44"]
+[ext_resource type="Script" path="res://Scripts/MusicController.cs" id="5_icqy4"]
+[ext_resource type="AudioStream" uid="uid://bnljsjpj0boa6" path="res://Music/MathEqualsTension.wav" id="7_fal6b"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("Timer", "SkullSplash", "ScenesNode", "TransitionSFXPlayer")]
 script = ExtResource("1_yerql")
 SkullRotateTimes = 1.0
 FirstScene = "Kitchen"
 Scenes = {
-"Kitchen": ExtResource("2_wfkoy")
+"Kitchen": ExtResource("2_wfkoy"),
+"School": ExtResource("3_phbn4")
 }
 Timer = NodePath("Timer")
 SkullSplash = NodePath("Skull")
@@ -46,5 +50,8 @@ one_shot = true
 stream = ExtResource("4_h5s44")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_wrbom")
-autoplay = true
+script = ExtResource("5_icqy4")
+transitionTime = 0.65
+firstTrack = "HomeSweetHome"
+trackNames = PackedStringArray("HomeSweetHome", "MathEqualsTension")
+trackStreams = Array[AudioStream]([ExtResource("3_wrbom"), ExtResource("7_fal6b")])

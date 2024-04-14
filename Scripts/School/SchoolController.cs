@@ -26,7 +26,8 @@ public partial class SchoolController : Node
         activity.Background.Visible = true;
         if (!activity.ShowNext())
         {
-            // TBA: Return to kitchen
+            MusicController.Play("HomeSweetHome");
+            SceneController.Current.TransitionToScene("Kitchen");
         }
     }
 }
