@@ -192,4 +192,17 @@ public static class ExtensionMethods
     {
         return string.Join("\nStirred\n", ingredients.ConvertAll(a => string.Join("\n", a)));
     }
+
+    public static string FixName(this string name)
+    {
+        return name switch
+        {
+            "MrFluffy" => "Mr. Fluffy",
+            "GrumpyFlower" => "Grumpy Flower",
+            "EnergyDrink" => "Energy Drink",
+            "LizardTail" => "Lizard",
+            "FunGuys" => "Fun Guys",
+            _ => name
+        };
+    }
 }

@@ -17,7 +17,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx6gk"]
 
-[node name="EndScreen" type="Node" node_paths=PackedStringArray("recipeLabel", "cakeNameLabels", "cakeSprite")]
+[node name="EndScreen" type="Node" node_paths=PackedStringArray("recipeLabel", "cakeNameLabels", "cakeSprite", "summingMistakesLabel")]
 script = ExtResource("1_xop7r")
 cakeTextures = {
 "Bone": ExtResource("3_t1pu3"),
@@ -32,6 +32,7 @@ cakeTextures = {
 recipeLabel = NodePath("UI/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Recipe")
 cakeNameLabels = [NodePath("UI/HBoxContainer/VBoxContainer/Title1"), NodePath("UI/HBoxContainer/VBoxContainer/Title2"), NodePath("UI/HBoxContainer/VBoxContainer/Title3")]
 cakeSprite = NodePath("Objects/Cake")
+summingMistakesLabel = NodePath("UI/HBoxContainer/VBoxContainer/SumMistakes")
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -144,4 +145,16 @@ horizontal_alignment = 1
 [node name="Title3" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Epiphany"
+horizontal_alignment = 1
+
+[node name="Seperator" type="Control" parent="UI/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="SumMistakes" type="Label" parent="UI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_88lhi")
+text = "Summing Mistakes: {0}"
 horizontal_alignment = 1

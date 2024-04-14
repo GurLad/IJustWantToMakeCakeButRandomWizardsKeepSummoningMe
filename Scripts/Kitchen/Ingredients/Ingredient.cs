@@ -34,6 +34,6 @@ public class Ingredient
 
     public override string ToString()
     {
-        return Count + " " + State.ToDisplayName() + Name;
+        return Count + " " + State.ToDisplayName() + Name.FixName();
     }
 }

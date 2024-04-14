@@ -18,6 +18,7 @@ public partial class EndScreen : Node
     [Export] private Label recipeLabel;
     [Export] private Label[] cakeNameLabels;
     [Export] private Sprite2D cakeSprite;
+    [Export] private Label summingMistakesLabel;
 
     public override void _Ready()
     {
@@ -37,6 +38,8 @@ public partial class EndScreen : Node
         {
             GD.PrintErr("Cake not found! " + cakeNameParts[1]);
         }
+        summingMistakesLabel.Text = string.Format(summingMistakesLabel.Text, SchoolController.Mistakes);
+        SchoolController.Mistakes = 0;
     }
 
     private string[] GenerateCakeNameParts(KitchenController.KitchenSaveState kitchenState)
@@ -86,7 +89,7 @@ public partial class EndScreen : Node
         List<string> sortedKeys = typesCount.Keys.ToList();
         sortedKeys.Sort((a, b) => -typesCount[a].CompareTo(typesCount[b]));
         result[0] = "The " + STATE_TITLES[finalState].RandomItemInList();
-        result[1] = sortedKeys.Count > 0 ? FixName(sortedKeys[0]) : "Nothing";
+        result[1] = sortedKeys.Count > 0 ? sortedKeys[0].FixName() : "Nothing";
         result[2] = CAKE_TITLES.RandomItemInList();
         return result;
     }
@@ -108,30 +111,17 @@ public partial class EndScreen : Node
             List<Ingredient> stirBlock = kitchenState.CakeParts[i];
             foreach (Ingredient ingredient in stirBlock)
             {
-                AddLine("Put " + FixName(ingredient.ToString()) + " in a bowl.");
+                AddLine("Put " + ingredient.ToString() + " in a bowl.");
             }
             AddLine(i == 0 ? "Stir" : (i == 1 ? "Stir again" : "Stir yet again"));
         }
         foreach (Ingredient ingredient in kitchenState.BowlContents)
         {
-            AddLine("Put " + FixName(ingredient.ToString()) + " in a bowl.");
+            AddLine("Put " + ingredient.ToString() + " in a bowl.");
         }
         AddLine("Put everything in the oven.");
         AddLine("Bake for 30 minutes.");
         AddLine("Enjoy your " + cakeName + "!");
         return result.Trim();
-    }
-
-    private string FixName(string name)
-    {
-        return name switch
-        {
-            "MrFluffy" => "Mr. Fluffy",
-            "GrumpyFlower" => "Grumpy Flower",
-            "EnergyDrink" => "Energy Drink",
-            "LizardTail" => "Lizard",
-            "FunGuys" => "Fun Guys",
-            _ => name
-        };
     }
 }
